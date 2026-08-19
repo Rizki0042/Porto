@@ -1,8 +1,12 @@
-*,html {
-    padding : 0;
+*,
+html {
+    padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
 
+html {
+    scroll-behavior: smooth;
 }
 
 .container-navbar {
@@ -218,4 +222,370 @@
 }
 .skill-progress.javascript {
     width: 50%;
+}
+
+/* =========================
+   CONTACT SECTION
+========================= */
+
+.section-contact {
+    min-height: 80vh;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+}
+
+.container-contact {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+.container-contact h2 {
+    font-size: 40px;
+    color: darkred;
+    margin-bottom: 10px;
+}
+
+.container-contact > p {
+    color: #666;
+    margin-bottom: 35px;
+}
+
+.contact-card {
+    background-color: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: darkred;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.contact-card button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background-color: darkred;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-card button:hover {
+    background-color: #8b0000;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    background-color: #2b0000;
+    color: white;
+    padding-top: 50px;
+}
+
+.container-footer {
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 30px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.footer-content {
+    max-width: 450px;
+}
+
+.footer-content h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.footer-content p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ff9999;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    padding: 20px;
+}
+
+.footer-bottom p {
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media screen and (max-width: 768px) {
+
+    /* ===== NAVBAR ===== */
+
+    .container-navbar {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .title-navbar {
+        font-size: 26px;
+    }
+
+    .ul-navbar {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .li-navbar a {
+        font-size: 14px;
+    }
+
+
+    /* ===== HERO ===== */
+
+    .section {
+        min-height: 70vh;
+        padding: 60px 20px;
+    }
+
+    .hero-subtitle {
+        font-size: 12px;
+        letter-spacing: 3px;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .hero-decoration {
+        width: 250px;
+        height: 250px;
+        right: -100px;
+        bottom: -100px;
+    }
+
+
+    /* ===== ABOUT ===== */
+
+    .section-aboutme {
+        min-height: auto;
+        padding: 70px 20px;
+    }
+
+    .container-aboutme h2 {
+        font-size: 32px;
+    }
+
+    .container-aboutme p {
+        font-size: 16px;
+    }
+
+    .img-aboutme {
+        width: 100%;
+        height: auto;
+        max-width: 350px;
+    }
+
+
+    /* ===== SKILLS ===== */
+
+    .section-skills {
+        min-height: auto;
+        padding: 70px 20px;
+    }
+
+    .container-skills h2 {
+        font-size: 32px;
+    }
+
+    .skills-card {
+        padding: 25px 20px;
+    }
+
+    .skill {
+        margin-bottom: 22px;
+    }
+
+
+    /* ===== CONTACT ===== */
+
+    .section-contact {
+        min-height: auto;
+        padding: 70px 20px;
+    }
+
+    .container-contact h2 {
+        font-size: 32px;
+    }
+
+    .contact-card {
+        padding: 25px 20px;
+    }
+
+
+    /* ===== FOOTER ===== */
+
+    .container-footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    .footer-content {
+        max-width: 100%;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .footer-bottom p {
+        font-size: 12px;
+    }
+}
+
+
+/* =========================
+   EXTRA SMALL SCREEN
+========================= */
+
+@media screen and (max-width: 480px) {
+
+    /* Navbar */
+
+    .title-navbar {
+        font-size: 24px;
+    }
+
+    .ul-navbar {
+        gap: 10px;
+    }
+
+    .li-navbar a {
+        font-size: 13px;
+    }
+
+
+    /* Hero */
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .hero-button {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+
+
+    /* About */
+
+    .container-aboutme h2 {
+        font-size: 28px;
+    }
+
+
+    /* Skills */
+
+    .container-skills h2 {
+        font-size: 28px;
+    }
+
+    .skills-card {
+        padding: 20px 15px;
+    }
+
+
+    /* Contact */
+
+    .container-contact h2 {
+        font-size: 28px;
+    }
+
+    .contact-card {
+        padding: 20px 15px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 14px;
+    }
+
+
+    /* Footer */
+
+    .footer-content h3 {
+        font-size: 24px;
+    }
 }

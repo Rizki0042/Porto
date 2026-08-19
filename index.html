@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
     <title>My Web</title>
 </head>
+
 <body>
     <!-- Header -->
     <header>
-        <nav class = "container-navbar">
-                <div class="title-navbar">My Website.</div>
-                <ul class ="ul-navbar">
-                    <li class ="li-navbar"><a href="#">Home</a></li>
-                    <li class ="li-navbar"><a href="#about">About</a></li>
-                    <li class ="li-navbar"><a href="#skills">Skills</a></li>
-                    <li class ="li-navbar"><a href="#">Services</a></li>
-                    <li class ="li-navbar"><a href="#">Contact</a></li>
-                </ul>
-            </nav>
+        <nav class="container-navbar">
+            <div class="title-navbar">My Website.</div>
+            <ul class="ul-navbar">
+                <li class="li-navbar"><a href="#">Home</a></li>
+                <li class="li-navbar"><a href="#about">About</a></li>
+                <li class="li-navbar"><a href="#skills">Skills</a></li>
+                <li class="li-navbar"><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-<!-- Section permulaan -->
+    <!-- Section permulaan -->
     <section class="section">
         <div class="hero-content">
             <p class="hero-subtitle">WELCOME TO MY WEBSITE</p>
 
             <h1>Selamat Datang di Website Saya</h1>
 
-                <p class="hero-description">
-                    Hanya permulaan dari perjalanan saya dalam belajar
-                    HTML, CSS, dan Web Development.
-                </p>
+            <p class="hero-description">
+                Hanya permulaan dari perjalanan saya dalam belajar
+                HTML, CSS, dan Web Development.
+            </p>
 
             <a href="#about" class="hero-button">Kenal Saya →</a>
         </div>
@@ -39,16 +40,16 @@
         <div class="hero-decoration"></div>
     </section>
 
-<!-- Section About me -->
+    <!-- Section About me -->
     <section class="section-aboutme" id="about">
         <div class="container-aboutme">
             <h2>About Me</h2>
             <p>Hanya seseorang lelaki yang hobi mendaki tetapi ingin bisa mengoding xD </p>
-            <img src="./component/ganteng.png" class="img-aboutme"/>
+            <img src="./component/ganteng.png" class="img-aboutme" />
         </div>
     </section>
 
-<!-- Section Card Skills -->
+    <!-- Section Card Skills -->
     <section class="section-skills" id="skills">
         <div class="container-skills">
             <h2>My Skills</h2>
@@ -91,8 +92,62 @@
 
     </section>
 
-    <footer>
+    <!-- Section Contact -->
+    <section class="section-contact" id="contact">
+        <div class="container-contact">
+            <h2>Contact Me</h2>
+            <p>Kalau ingin menghubungi saya, silakan isi form di bawah ini.</p>
 
+            <div class="contact-card">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nama</label>
+                        <input type="text" id="name" placeholder="Masukkan nama kamu">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Masukkan email kamu">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea id="message" rows="5" placeholder="Tulis pesan kamu..."></textarea>
+                    </div>
+
+                    <button type="submit">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-footer">
+
+            <div class="footer-content">
+                <h3>My Website.</h3>
+                <p>
+                    Website sederhana sebagai bagian dari perjalanan
+                    saya belajar HTML & CSS.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 My Website. Made by Rizki Rahmad.</p>
+        </div>
     </footer>
+
+
 </body>
+
 </html>
