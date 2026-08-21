@@ -41,6 +41,24 @@ app.post("/contact", (req, res) => {
     });
 });
 
+app.get("/contact", (req, res) => {
+    const sql = "SELECT * FROM contact";
+
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({
+                message: "Gagal mengambil data kontak"
+            });
+        }
+
+        res.status(200).json({
+            message: "Data kontak berhasil diambil!",
+            data: results
+        });
+    });
+});
+
 app.listen(PORT, () => {
     console.log(`Server berjalan di https://localhost: ${PORT}`);
 });
