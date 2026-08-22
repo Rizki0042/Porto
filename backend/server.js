@@ -59,6 +59,67 @@ app.get("/contact", (req, res) => {
     });
 });
 
+app.delete("/contact/:id", (req, res) => {
+
+    const id = req.params.id;
+
+    const sql = "DELETE FROM contact WHERE id = ?";
+
+    db.query(sql, [id], (err, result) => {
+
+        if (err) {
+            console.log(err);
+
+            return res.status(500).json({
+                message: "Gagal menghapus contact"
+            });
+        }
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({
+                message: "Data contact tidak ditemukan"
+            });
+        }
+
+        res.status(200).json({
+            message: "Contact berhasil dihapus"
+        });
+    });
+});
+
+app.put("/contact/:id", (req, res) => {
+
+    const id = req.params.id;
+    const { nama, email, pesan } = req.body;
+
+    const sql = `
+        UPDATE contact
+        SET nama = ?, email = ?, pesan = ?
+        WHERE id = ?
+    `;
+
+    db.query(sql, [nama, email, pesan, id], (err, result) => {
+
+        if (err) {
+            console.log(err);
+
+            return res.status(500).json({
+                message: "Gagal mengupdate contact"
+            });
+        }
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({
+                message: "Data contact tidak ditemukan"
+            });
+        }
+
+        res.status(200).json({
+            message: "Contact berhasil diupdate"
+        });
+    });
+});
+
 app.listen(PORT, () => {
     console.log(`Server berjalan di https://localhost: ${PORT}`);
 });

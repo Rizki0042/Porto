@@ -63,6 +63,45 @@
             text-align: center;
             padding: 20px;
         }
+
+        .delete-button {
+            background-color: darkred;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .delete-button:hover {
+            background-color: #8b0000;
+        }
+
+        .edit-button,
+        .delete-button {
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 2px;
+        }
+
+        .edit-button {
+            background-color: #555;
+        }
+
+        .edit-button:hover {
+            background-color: #333;
+        }
+
+        .delete-button {
+            background-color: darkred;
+        }
+
+        .delete-button:hover {
+            background-color: #8b0000;
+        }
     </style>
 </head>
 
@@ -85,13 +124,14 @@
                     <th>Email</th>
                     <th>Pesan</th>
                     <th>Tanggal</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
 
             <tbody id="contact-table">
 
                 <tr>
-                    <td colspan="5" class="loading">
+                    <td colspan="6" class="loading">
                         Loading...
                     </td>
                 </tr>
