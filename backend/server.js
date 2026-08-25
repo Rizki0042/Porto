@@ -59,6 +59,48 @@ app.get("/contact", (req, res) => {
     });
 });
 
+app.get("/contact/count", (req, res) => {
+
+    const sql = "SELECT COUNT(*) AS total FROM contact";
+
+    db.query(sql, (err, result) => {
+
+        if (err) {
+            console.log(err);
+
+            return res.status(500).json({
+                message: "Gagal menghitung contact"
+            });
+        }
+
+        res.status(200).json({
+            message: "Berhasil menghitung contact",
+            total: result[0].total
+        });
+
+    });
+
+});
+
+app.get("/contact/latest", (req, res) => {
+    const sql =` SELECT * FROM contact ORDER BY id DESC LIMIT 5`;
+
+    db.query(sql, (err, result) => {
+        if (err) {
+            console.log(err);
+
+            return res.status(500).json({
+                message: "Gagal mengambil data contact terbaru"
+            });
+        }
+
+        res.status(200).json({
+            message: "Berhasil mengambil data contact terbaru",
+            data: result
+        });
+    });
+});
+
 app.delete("/contact/:id", (req, res) => {
 
     const id = req.params.id;
@@ -90,7 +132,11 @@ app.delete("/contact/:id", (req, res) => {
 app.put("/contact/:id", (req, res) => {
 
     const id = req.params.id;
+
     const { nama, email, pesan } = req.body;
+
+    console.log("ID:", id);
+    console.log("Data baru:", nama, email, pesan);
 
     const sql = `
         UPDATE contact
@@ -98,26 +144,88 @@ app.put("/contact/:id", (req, res) => {
         WHERE id = ?
     `;
 
-    db.query(sql, [nama, email, pesan, id], (err, result) => {
+    db.query(
+        sql,
+        [nama, email, pesan, id],
+        (err, result) => {
+
+            if (err) {
+                console.log("Error UPDATE:", err);
+
+                return res.status(500).json({
+                    message: "Gagal mengupdate contact"
+                });
+            }
+
+            console.log("Hasil UPDATE:", result);
+
+            if (result.affectedRows === 0) {
+
+                return res.status(404).json({
+                    message: "Data contact tidak ditemukan atau tidak ada perubahan"
+                });
+
+            }
+
+            res.status(200).json({
+                message: "Contact berhasil diupdate"
+            });
+
+        }
+    );
+});
+
+app.patch("/contact/:id/status", (req, res) => {
+
+    const id = req.params.id;
+    const { status } = req.body;
+
+    const statusValid = [
+        "Baru",
+        "Dibaca",
+        "Selesai"
+    ];
+
+    if (!statusValid.includes(status)) {
+
+        return res.status(400).json({
+            message: "Status tidak valid"
+        });
+
+    }
+
+    const sql = `
+        UPDATE contact
+        SET status = ?
+        WHERE id = ?
+    `;
+
+    db.query(sql, [status, id], (err, result) => {
 
         if (err) {
+
             console.log(err);
 
             return res.status(500).json({
-                message: "Gagal mengupdate contact"
+                message: "Gagal mengubah status"
             });
+
         }
 
         if (result.affectedRows === 0) {
+
             return res.status(404).json({
-                message: "Data contact tidak ditemukan"
+                message: "Contact tidak ditemukan"
             });
+
         }
 
         res.status(200).json({
-            message: "Contact berhasil diupdate"
+            message: "Status berhasil diubah"
         });
+
     });
+
 });
 
 app.listen(PORT, () => {
