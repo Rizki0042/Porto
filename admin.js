@@ -15,6 +15,7 @@ async function getContacts() {
     console.log("Response:", response);
 
     const result = await response.json();
+    
 
     console.log("Data:", result);
 
@@ -27,9 +28,12 @@ async function getContacts() {
     contactTable.innerHTML = "";
 
     result.data.forEach((contact) => {
-      const row = document.createElement("tr");
 
-      row.innerHTML = `
+  const row = document.createElement("tr");
+
+  const status = contact.status || "Baru";
+
+  row.innerHTML = `
 
                 <td>${contact.id}</td>
 
@@ -43,28 +47,29 @@ async function getContacts() {
 
                 <td>
 
-                    <select
-                        onchange="updateStatus(${contact.id}, this.value)"
-                    >
+    <select
+        class="status-select status-${status.toLowerCase()}"
+        onchange="updateStatus(${contact.id}, this)"
+    >
 
-                        <option value="Baru"
-                            ${contact.status === "Baru" ? "selected" : ""}>
-                            🔵 Baru
-                        </option>
+        <option value="Baru"
+            ${status === "Baru" ? "selected" : ""}>
+            🔵 Baru
+        </option>
 
-                        <option value="Dibaca"
-                            ${contact.status === "Dibaca" ? "selected" : ""}>
-                            🟡 Dibaca
-                        </option>
+        <option value="Dibaca"
+            ${status === "Dibaca" ? "selected" : ""}>
+            🟡 Dibaca
+        </option>
 
-                        <option value="Selesai"
-                            ${contact.status === "Selesai" ? "selected" : ""}>
-                            🟢 Selesai
-                        </option>
+        <option value="Selesai"
+            ${status === "Selesai" ? "selected" : ""}>
+            🟢 Selesai
+        </option>
 
-                    </select>
+    </select>
 
-                </td>
+</td>
 
                 <td>
 
@@ -137,10 +142,10 @@ async function deleteContact(id) {
 // UPDATE STATUS
 // ===============================
 
-async function updateStatus(id, status) {
-  try {
-    console.log("Mengubah status ID:", id, "menjadi:", status);
+async function updateStatus(id, selectElement) {
+  const status = selectElement.value;
 
+  try {
     const response = await fetch(`http://localhost:3000/contact/${id}/status`, {
       method: "PATCH",
 
@@ -155,19 +160,28 @@ async function updateStatus(id, status) {
 
     const result = await response.json();
 
-    console.log("Response update status:", result);
-
     if (!response.ok) {
       throw new Error(result.message);
     }
 
     console.log(result.message);
 
-    getContacts();
+    // Hapus class status sebelumnya
+    selectElement.classList.remove(
+      "status-baru",
+      "status-dibaca",
+      "status-selesai",
+    );
+
+    // Tambahkan class sesuai status baru
+    selectElement.classList.add(`status-${status.toLowerCase()}`);
   } catch (error) {
     console.error("Gagal mengubah status:", error);
 
     alert("Gagal mengubah status");
+
+    // Kalau gagal, ambil ulang data dari database
+    getContacts();
   }
 }
 
