@@ -21,6 +21,12 @@
   --input-background: #fff;
   --skill-bar: #ddd;
   --header-background: #fff;
+
+  /* Mode Terang: Hero Putih Clean */
+  --hero-bg: #ffffff;
+  --hero-text: var(--text);
+  --hero-subtitle: var(--primary);
+  --hero-desc: var(--text-muted);
 }
 
 body.dark-mode {
@@ -35,6 +41,12 @@ body.dark-mode {
   --input-background: #202020;
   --skill-bar: #4a4a4a;
   --header-background: #202020;
+
+  /* Mode Gelap: Hero Elegan (Dark Charcoal/Black Gradient) */
+  --hero-bg: linear-gradient(135deg, #1f1f1f, #121212, #0a0a0a);
+  --hero-text: #ffffff;
+  --hero-subtitle: var(--primary-light);
+  --hero-desc: #b5b5b5;
 }
 
 *,
@@ -80,6 +92,7 @@ header {
   display: flex;
   list-style-type: none;
   gap: 20px;
+  align-items: center; /* Sejajar secara vertikal */
 }
 
 .li-navbar a {
@@ -92,20 +105,25 @@ header {
   color: var(--primary);
 }
 
+.li-navbar:last-child {
+  display: flex;
+  align-items: center;
+}
+
 .theme-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 9px 13px;
+  gap: 4px;
+  padding: 5px 9px;
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 16px;
   background-color: var(--background-light);
   color: var(--text);
   font: inherit;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: inherit;
+  font-weight: normal;
   cursor: pointer;
-  transition: 0.25s ease;
+  transition: color 0.25s ease;
 }
 
 .theme-toggle:hover {
@@ -124,12 +142,7 @@ header {
 
 .section {
   min-height: 80vh;
-  background: linear-gradient(
-    135deg,
-    var(--primary),
-    var(--primary-dark),
-    var(--primary-darker)
-  );
+  background: var(--hero-bg);
 
   display: flex;
   justify-content: center;
@@ -139,6 +152,7 @@ header {
 
   position: relative;
   overflow: hidden;
+  transition: background 0.25s ease;
 }
 
 .hero-content {
@@ -148,7 +162,7 @@ header {
 }
 
 .hero-subtitle {
-  color: var(--primary-soft);
+  color: var(--hero-subtitle);
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 4px;
@@ -156,14 +170,14 @@ header {
 }
 
 .hero-content h1 {
-  color: var(--white);
+  color: var(--hero-text);
   font-size: 55px;
   line-height: 1.2;
   margin-bottom: 20px;
 }
 
 .hero-description {
-  color: var(--primary-text-light);
+  color: var(--hero-desc);
   font-size: 18px;
   line-height: 1.7;
   max-width: 600px;
@@ -172,22 +186,20 @@ header {
 
 .hero-button {
   display: inline-block;
-
   padding: 14px 30px;
 
-  background-color: var(--white);
-  color: var(--primary);
+  background-color: var(--primary);
+  color: var(--white);
 
   text-decoration: none;
   border-radius: 30px;
 
   font-weight: bold;
-
   transition: 0.3s;
 }
 
 .hero-button:hover {
-  background-color: var(--primary-light);
+  background-color: var(--primary-dark);
   transform: translateY(-3px);
 }
 
@@ -197,30 +209,21 @@ header {
 
 .hero-decoration {
   position: absolute;
-
   width: 400px;
   height: 400px;
-
-  border: 2px solid rgba(255, 255, 255, 0.15);
-
+  border: 2px solid rgba(139, 0, 0, 0.15);
   border-radius: 50%;
-
   right: -100px;
   bottom: -150px;
 }
 
 .hero-decoration::before {
   content: "";
-
   position: absolute;
-
   width: 250px;
   height: 250px;
-
-  border: 2px solid rgba(255, 255, 255, 0.1);
-
+  border: 2px solid rgba(139, 0, 0, 0.1);
   border-radius: 50%;
-
   top: 70px;
   left: 70px;
 }
@@ -231,7 +234,6 @@ header {
 
 .section-aboutme {
   min-height: 80vh;
-
   background-color: var(--background);
 
   display: flex;
@@ -239,7 +241,6 @@ header {
   align-items: center;
 
   text-align: center;
-
   padding: 80px 20px;
 }
 
@@ -261,9 +262,7 @@ header {
 
 .img-aboutme {
   height: 350px;
-
   border-radius: 20px;
-
   object-fit: cover;
 }
 
@@ -273,7 +272,6 @@ header {
 
 .section-skills {
   min-height: 80vh;
-
   background-color: var(--surface);
 
   display: flex;
@@ -281,7 +279,6 @@ header {
   align-items: center;
 
   text-align: center;
-
   padding: 80px 20px;
 }
 
@@ -303,13 +300,9 @@ header {
 
 .skills-card {
   background-color: var(--background-light);
-
   padding: 35px;
-
   border-radius: 20px;
-
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-
   text-align: left;
 }
 
@@ -324,28 +317,21 @@ header {
 .skill-info {
   display: flex;
   justify-content: space-between;
-
   margin-bottom: 8px;
-
   font-weight: bold;
 }
 
 .skill-bar {
   width: 100%;
   height: 12px;
-
   background-color: var(--skill-bar);
-
   border-radius: 20px;
-
   overflow: hidden;
 }
 
 .skill-progress {
   height: 100%;
-
   background-color: var(--primary);
-
   border-radius: 20px;
 }
 
@@ -405,7 +391,6 @@ header {
   display: flex;
   flex-direction: column;
   gap: 25px;
-
   text-align: left;
 }
 
@@ -415,21 +400,17 @@ header {
 
 .experience-card {
   background-color: var(--background-light);
-
   padding: 30px;
   border-radius: 20px;
-
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 
   display: flex;
   gap: 30px;
-
   transition: 0.3s;
 }
 
 .experience-card:hover {
   transform: translateY(-5px);
-
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 }
 
@@ -442,14 +423,11 @@ header {
   height: fit-content;
 
   padding: 10px 15px;
-
   background-color: var(--primary);
   color: var(--white);
 
   border-radius: 20px;
-
   text-align: center;
-
   font-size: 14px;
   font-weight: bold;
 }
@@ -464,33 +442,25 @@ header {
 
 .experience-content h3 {
   color: var(--text);
-
   font-size: 23px;
-
   margin-bottom: 6px;
 }
 
 .experience-content h4 {
   color: var(--primary);
-
   font-size: 16px;
-
   margin-bottom: 15px;
 }
 
 .experience-content p {
   color: var(--text-muted);
-
   line-height: 1.7;
-
   margin-bottom: 15px;
 }
 
 .experience-content ul {
   padding-left: 20px;
-
   color: var(--text-muted);
-
   line-height: 1.8;
 }
 
@@ -504,7 +474,6 @@ header {
 
 .section-contact {
   min-height: 80vh;
-
   background-color: var(--background);
 
   display: flex;
@@ -517,40 +486,31 @@ header {
 .container-contact {
   width: 100%;
   max-width: 700px;
-
   text-align: center;
 }
 
 .container-contact h2 {
   font-size: 40px;
-
   color: var(--primary);
-
   margin-bottom: 10px;
 }
 
 .container-contact > p {
   color: var(--text-muted);
-
   margin-bottom: 35px;
 }
 
 .contact-card {
   background-color: var(--surface);
-
   padding: 35px;
-
   border-radius: 20px;
-
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-
   text-align: left;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-
   margin-bottom: 20px;
 }
 
@@ -562,16 +522,13 @@ header {
 .form-group input,
 .form-group textarea {
   padding: 13px;
-
   border: 1px solid var(--border);
-
   border-radius: 10px;
 
   font-size: 15px;
   font-family: inherit;
   background-color: var(--input-background);
   color: var(--text);
-
   outline: none;
 }
 
@@ -586,11 +543,8 @@ header {
 
 .contact-card button {
   width: 100%;
-
   padding: 14px;
-
   border: none;
-
   border-radius: 10px;
 
   background-color: var(--primary);
@@ -598,7 +552,6 @@ header {
 
   font-size: 16px;
   font-weight: bold;
-
   cursor: pointer;
 
   transition: 0.3s;
@@ -606,7 +559,6 @@ header {
 
 .contact-card button:hover {
   background-color: var(--primary-dark);
-
   transform: translateY(-2px);
 }
 
@@ -616,24 +568,18 @@ header {
 
 .footer {
   background-color: var(--primary-darker);
-
   color: var(--white);
-
   padding-top: 50px;
 }
 
 .container-footer {
   max-width: 1000px;
-
   margin: auto;
-
   padding: 0 30px 40px;
 
   display: flex;
-
   justify-content: space-between;
   align-items: center;
-
   gap: 50px;
 }
 
@@ -658,9 +604,7 @@ header {
 
 .footer-links a {
   color: var(--white);
-
   text-decoration: none;
-
   transition: 0.3s;
 }
 
@@ -670,15 +614,12 @@ header {
 
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-
   text-align: center;
-
   padding: 20px;
 }
 
 .footer-bottom p {
   color: #aaa;
-
   font-size: 14px;
 }
 
@@ -687,18 +628,10 @@ header {
 ========================= */
 
 @media screen and (max-width: 768px) {
-  /* ===== NAVBAR ===== */
-
   .container-navbar {
     padding: 15px 20px;
-
     flex-direction: column;
-
     gap: 15px;
-  }
-
-  .theme-toggle {
-    order: 3;
   }
 
   .title-navbar {
@@ -707,9 +640,7 @@ header {
 
   .ul-navbar {
     gap: 15px;
-
     flex-wrap: wrap;
-
     justify-content: center;
   }
 
@@ -717,17 +648,13 @@ header {
     font-size: 14px;
   }
 
-  /* ===== HERO ===== */
-
   .section {
     min-height: 70vh;
-
     padding: 60px 20px;
   }
 
   .hero-subtitle {
     font-size: 12px;
-
     letter-spacing: 3px;
   }
 
@@ -742,16 +669,12 @@ header {
   .hero-decoration {
     width: 250px;
     height: 250px;
-
     right: -100px;
     bottom: -100px;
   }
 
-  /* ===== ABOUT ===== */
-
   .section-aboutme {
     min-height: auto;
-
     padding: 70px 20px;
   }
 
@@ -766,15 +689,11 @@ header {
   .img-aboutme {
     width: 100%;
     height: auto;
-
     max-width: 350px;
   }
 
-  /* ===== SKILLS ===== */
-
   .section-skills {
     min-height: auto;
-
     padding: 70px 20px;
   }
 
@@ -790,11 +709,8 @@ header {
     margin-bottom: 22px;
   }
 
-  /* ===== CONTACT ===== */
-
   .section-contact {
     min-height: auto;
-
     padding: 70px 20px;
   }
 
@@ -806,15 +722,10 @@ header {
     padding: 25px 20px;
   }
 
-  /* ===== FOOTER ===== */
-
   .container-footer {
     flex-direction: column;
-
     text-align: center;
-
     padding: 40px 20px;
-
     gap: 30px;
   }
 
@@ -824,9 +735,7 @@ header {
 
   .footer-links {
     flex-wrap: wrap;
-
     justify-content: center;
-
     gap: 15px;
   }
 
@@ -835,13 +744,7 @@ header {
   }
 }
 
-/* =========================
-   EXTRA SMALL SCREEN
-========================= */
-
 @media screen and (max-width: 480px) {
-  /* ===== NAVBAR ===== */
-
   .title-navbar {
     font-size: 24px;
   }
@@ -854,8 +757,6 @@ header {
     font-size: 13px;
   }
 
-  /* ===== HERO ===== */
-
   .hero-content h1 {
     font-size: 32px;
   }
@@ -866,17 +767,12 @@ header {
 
   .hero-button {
     padding: 12px 25px;
-
     font-size: 14px;
   }
-
-  /* ===== ABOUT ===== */
 
   .container-aboutme h2 {
     font-size: 28px;
   }
-
-  /* ===== SKILLS ===== */
 
   .container-skills h2 {
     font-size: 28px;
@@ -885,8 +781,6 @@ header {
   .skills-card {
     padding: 20px 15px;
   }
-
-  /* ===== CONTACT ===== */
 
   .container-contact h2 {
     font-size: 28px;
@@ -900,8 +794,6 @@ header {
   .form-group textarea {
     font-size: 14px;
   }
-
-  /* ===== FOOTER ===== */
 
   .footer-content h3 {
     font-size: 24px;
