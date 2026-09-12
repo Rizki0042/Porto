@@ -1,165 +1,246 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>My Web</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Header -->
     <header>
-        <nav class="container-navbar">
-            <div class="title-navbar">My Website.</div>
-            <ul class="ul-navbar">
-                <li class="li-navbar"><a href="#">Home</a></li>
-                <li class="li-navbar"><a href="#about">About</a></li>
-                <li class="li-navbar"><a href="#skills">Skills</a></li>
-                <li class="li-navbar"><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+      <nav class="container-navbar">
+        <div class="title-navbar">My Website.</div>
+        <ul class="ul-navbar">
+          <li class="li-navbar"><a href="#">Home</a></li>
+          <li class="li-navbar"><a href="#about">About</a></li>
+          <li class="li-navbar"><a href="#skills">Skills</a></li>
+          <li class="li-navbar"><a href="#contact">Contact</a></li>
+          <li class="li-navbar"><a href="#experience">Experience</a></li>
+        </ul>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Aktifkan mode gelap" aria-pressed="false">
+          <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+          <span class="theme-toggle-text">Gelap</span>
+        </button>
+      </nav>
     </header>
 
     <!-- Section permulaan -->
     <section class="section">
-        <div class="hero-content">
-            <p class="hero-subtitle">WELCOME TO MY WEBSITE</p>
+      <div class="hero-content">
+        <p class="hero-subtitle">WELCOME TO MY WEBSITE</p>
 
-            <h1>Selamat Datang di Website Saya</h1>
+        <h1>Selamat Datang di Website Saya</h1>
 
-            <p class="hero-description">
-                Hanya permulaan dari perjalanan saya dalam belajar
-                HTML, CSS, dan Web Development.
-            </p>
+        <p class="hero-description">
+          Hanya permulaan dari perjalanan saya dalam belajar HTML, CSS, dan Web
+          Development.
+        </p>
 
-            <a href="#about" class="hero-button">Kenal Saya →</a>
-        </div>
+        <a href="#about" class="hero-button">Kenal Saya →</a>
+      </div>
 
-        <div class="hero-decoration"></div>
+      <div class="hero-decoration"></div>
     </section>
 
     <!-- Section About me -->
     <section class="section-aboutme" id="about">
-        <div class="container-aboutme">
-            <h2>About Me</h2>
-            <p>Hanya seseorang lelaki yang hobi mendaki tetapi ingin bisa mengoding xD </p>
-            <img src="./component/ganteng.png" class="img-aboutme" />
-        </div>
+      <div class="container-aboutme">
+        <h2>About Me</h2>
+        <p>
+          Hanya seseorang lelaki yang hobi mendaki tetapi ingin bisa mengoding
+          uhuy
+        </p>
+        <img src="./component/ganteng.png" class="img-aboutme" />
+      </div>
     </section>
 
     <!-- Section Card Skills -->
     <section class="section-skills" id="skills">
-        <div class="container-skills">
-            <h2>My Skills</h2>
-            <p>Beberapa kemampuan yang telah saya pelajari.</p>
+      <div class="container-skills">
+        <h2>My Skills</h2>
+        <p>Beberapa kemampuan yang telah saya pelajari.</p>
 
-            <div class="skills-card">
-
-                <div class="skill">
-                    <div class="skill-info">
-                        <span>HTML</span>
-                        <span>80%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress html"></div>
-                    </div>
-                </div>
-
-                <div class="skill">
-                    <div class="skill-info">
-                        <span>CSS</span>
-                        <span>70%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress css"></div>
-                    </div>
-                </div>
-
-                <div class="skill">
-                    <div class="skill-info">
-                        <span>JavaScript</span>
-                        <span>50%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress javascript"></div>
-                    </div>
-                </div>
-
+        <div class="skills-card">
+          <div class="skill">
+            <div class="skill-info">
+              <span>HTML</span>
+              <span>80%</span>
             </div>
-        </div>
+            <div class="skill-bar">
+              <div class="skill-progress html"></div>
+            </div>
+          </div>
 
+          <div class="skill">
+            <div class="skill-info">
+              <span>CSS</span>
+              <span>70%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress css"></div>
+            </div>
+          </div>
+
+          <div class="skill">
+            <div class="skill-info">
+              <span>JavaScript</span>
+              <span>50%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress javascript"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--EXPERIENCE SECTION-->
+
+    <section class="section-experience" id="experience">
+      <div class="container-experience">
+        <h2>Pengalaman Kerja</h2>
+
+        <p class="experience-description">
+          Beberapa pengalaman kerja dan kegiatan yang pernah saya jalani.
+        </p>
+
+        <div class="experience-list">
+          <!-- EXPERIENCE 1 -->
+          <div class="experience-card">
+            <div class="experience-date">2024 - 2025</div>
+
+            <div class="experience-content">
+              <h3>Nama Posisi / Jabatan</h3>
+
+              <h4>Nama Perusahaan</h4>
+
+              <p>
+                Tuliskan deskripsi pengalaman kerja kamu di sini. Misalnya
+                tugas, tanggung jawab, atau pekerjaan yang pernah dilakukan.
+              </p>
+
+              <ul>
+                <li>Deskripsi pekerjaan pertama</li>
+                <li>Deskripsi pekerjaan kedua</li>
+                <li>Deskripsi pekerjaan ketiga</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- EXPERIENCE 2 -->
+          <div class="experience-card">
+            <div class="experience-date">2023 - 2024</div>
+
+            <div class="experience-content">
+              <h3>Nama Posisi / Jabatan</h3>
+
+              <h4>Nama Perusahaan</h4>
+
+              <p>Tuliskan deskripsi pengalaman kerja kamu di sini.</p>
+
+              <ul>
+                <li>Deskripsi pekerjaan pertama</li>
+                <li>Deskripsi pekerjaan kedua</li>
+                <li>Deskripsi pekerjaan ketiga</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- EXPERIENCE 3 -->
+          <div class="experience-card">
+            <div class="experience-date">2022 - 2023</div>
+
+            <div class="experience-content">
+              <h3>Nama Posisi / Jabatan</h3>
+
+              <h4>Nama Perusahaan</h4>
+
+              <p>Tuliskan deskripsi pengalaman kerja kamu di sini.</p>
+
+              <ul>
+                <li>Deskripsi pekerjaan pertama</li>
+                <li>Deskripsi pekerjaan kedua</li>
+                <li>Deskripsi pekerjaan ketiga</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Section Contact -->
     <section class="section-contact" id="contact">
-        <div class="container-contact">
-            <h2>Contact Me</h2>
-            <p>Kalau ingin menghubungi saya, silakan isi form di bawah ini.</p>
+      <div class="container-contact">
+        <h2>Contact Me</h2>
+        <p>Kalau ingin menghubungi saya, silakan isi form di bawah ini.</p>
 
-            <div class="contact-card">
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Nama</label>
-                        <input type="text"
-                         id="name"
-                         placeholder="Masukkan nama kamu"
-                         required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" 
-                        id="email" 
-                        placeholder="Masukkan email kamu"
-                        required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Pesan</label>
-                        <textarea id="message"
-                        rows="5"
-                        placeholder="Tulis pesan kamu..."
-                        required
-                        ></textarea>
-                    </div>
-
-                    <button type="submit">Kirim Pesan</button>
-
-                    <p id="contact-status"></p>
-                </form>
+        <div class="contact-card">
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="name">Nama</label>
+              <input
+                type="text"
+                id="name"
+                placeholder="Masukkan nama kamu"
+                required
+              />
             </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Masukkan email kamu"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Pesan</label>
+              <textarea
+                id="message"
+                rows="5"
+                placeholder="Tulis pesan kamu..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit">Kirim Pesan</button>
+
+            <p id="contact-status"></p>
+          </form>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container-footer">
-
-            <div class="footer-content">
-                <h3>My Website.</h3>
-                <p>
-                    Website sederhana sebagai bagian dari perjalanan
-                    saya belajar HTML & CSS.
-                </p>
-            </div>
-
-            <div class="footer-links">
-                <a href="#">Home</a>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
-            </div>
-
+      <div class="container-footer">
+        <div class="footer-content">
+          <h3>My Website.</h3>
+          <p>
+            Website sederhana sebagai bagian dari perjalanan saya belajar HTML &
+            CSS.
+          </p>
         </div>
 
-        <div class="footer-bottom">
-            <p>© 2026 My Website. Made by Rizki Rahmad.</p>
+        <div class="footer-links">
+          <a href="#">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+          <a href="#experience">Experience</a>
         </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 My website. Made by Rizki Rahmad.</p>
+      </div>
     </footer>
 
-<script src="script.js"></script>
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>

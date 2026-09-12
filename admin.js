@@ -31,7 +31,7 @@ async function getContacts() {
 
   const row = document.createElement("tr");
 
-  const status = contact.status || "Baru";
+  const status = contact.STATUS || "Baru"; // Default ke "Baru" jika status null
 
   row.innerHTML = `
 
