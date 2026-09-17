@@ -8,7 +8,6 @@ function setTheme(theme) {
     themeToggle.setAttribute("aria-pressed", String(isDark));
     themeToggle.setAttribute("aria-label", isDark ? "Aktifkan mode terang" : "Aktifkan mode gelap");
     themeToggle.querySelector(".theme-toggle-icon").textContent = isDark ? "☀" : "☾";
-    themeToggle.querySelector(".theme-toggle-text").textContent = isDark ? "Terang" : "Gelap";
 }
 
 const savedTheme = localStorage.getItem("theme");

@@ -16,8 +16,9 @@
           <li class="li-navbar"><a href="#">Home</a></li>
           <li class="li-navbar"><a href="#about">About</a></li>
           <li class="li-navbar"><a href="#skills">Skills</a></li>
-          <li class="li-navbar"><a href="#contact">Contact</a></li>
+          <li class="li-navbar"><a href="#projects">Projects</a></li>
           <li class="li-navbar"><a href="#experience">Experience</a></li>
+          <li class="li-navbar"><a href="#contact">Contact</a></li>
           <li class="li-navbar">
             <button
               class="theme-toggle"
@@ -27,7 +28,6 @@
               aria-pressed="false"
             >
               <span class="theme-toggle-icon" aria-hidden="true">☾</span>
-              <span class="theme-toggle-text">Gelap</span>
             </button>
           </li>
         </ul>
@@ -35,32 +35,62 @@
     </header>
 
     <!-- Section permulaan -->
-    <section class="section">
+    <section class="section-hero" id="home">
       <div class="hero-content">
-        <p class="hero-subtitle">WELCOME TO MY WEBSITE</p>
+        <div class="hero-image">
+          <img src="component/ganteng.png" alt="Foto Pribadi" />
+        </div>
 
-        <h1>Selamat Datang di Website Saya</h1>
+        <div class="hero-text">
+          <p class="hero-subtitle">Hello, I'M Rizki</p>
+          <h1>Pelajar yang sedang belajar Web Development Cuy</h1>
 
-        <p class="hero-description">
-          Hanya permulaan dari perjalanan saya dalam belajar HTML, CSS, dan Web
-          Development.
-        </p>
+          <p class="hero-description">
+            Saya sedang membangun kemampuan di bidang web development, mulai
+            dari HTML dan CSS hingga JavaScript, sambil terus belajar dan
+            membuat berbagai project.
+          </p>
 
-        <a href="#about" class="hero-button">Kenal Saya →</a>
+          <div class="hero-button-wrapper">
+            <a href="#about" class="hero-button">Kenal Saya → </a>
+          </div>
+        </div>
       </div>
-
       <div class="hero-decoration"></div>
     </section>
 
     <!-- Section About me -->
     <section class="section-aboutme" id="about">
       <div class="container-aboutme">
-        <h2>About Me</h2>
-        <p>
-          Hanya seseorang lelaki yang hobi mendaki tetapi ingin bisa mengoding
-          uhuy
-        </p>
-        <img src="./component/ganteng.png" class="img-aboutme" />
+        <div class="about-text">
+          <h2>About Me</h2>
+          <h3>Halo, saya Rizki 👋</h3>
+
+          <p>
+            Saya lagi belajar dan mengembangkan kemampuan di bidang web
+            development. Saat ini saya fokus memperkuat HTML, CSS, dan
+            JavaScript, sambil mulai mengenal React, Express, dan database.
+          </p>
+
+          <p>
+            Saya suka belajar hal baru, mencoba bikin sesuatu dari apa yang saya
+            pelajari, dan terus berkembang sedikit demi sedikit. Buat saya,
+            nggak harus langsung jago — yang penting terus belajar dan nggak
+            berhenti mencoba.
+          </p>
+
+          <p>
+            Dari hal-hal sederhana yang saya pelajari, saya ingin terus
+            berkembang dan suatu saat bisa membuat sesuatu yang benar-benar
+            berguna.
+          </p>
+
+          <div class="about-tags">
+            <span>💻 Web Development</span>
+            <span>📚 Always Learning</span>
+            <span>🛠️ Building Projects</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -68,37 +98,39 @@
     <section class="section-skills" id="skills">
       <div class="container-skills">
         <h2>My Skills</h2>
-        <p>Beberapa kemampuan yang telah saya pelajari.</p>
+        <p>
+          Beberapa teknologi dan hal yang sedang saya pelajari dalam perjalanan
+          web development.
+        </p>
 
         <div class="skills-card">
-          <div class="skill">
-            <div class="skill-info">
-              <span>HTML</span>
-              <span>80%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress html"></div>
-            </div>
+          <div class="skill-item">
+            <span>HTML</span>
           </div>
 
-          <div class="skill">
-            <div class="skill-info">
-              <span>CSS</span>
-              <span>70%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress css"></div>
-            </div>
+          <div class="skill-item">
+            <span>CSS</span>
           </div>
 
-          <div class="skill">
-            <div class="skill-info">
-              <span>JavaScript</span>
-              <span>50%</span>
-            </div>
-            <div class="skill-bar">
-              <div class="skill-progress javascript"></div>
-            </div>
+          <div class="skill-item">
+            <span>JavaScript</span>
+          </div>
+
+          <div class="skill-item">
+            <span>Git</span>
+          </div>
+
+          <div class="skill-item">
+            <span>Responsive Design</span>
+          </div>
+        </div>
+
+        <div class="learning">
+          <h3>Currently Learning</h3>
+
+          <div class="learning-tags">
+            <span>React</span>
+            <span>Express.js</span>
           </div>
         </div>
       </div>
@@ -140,21 +172,20 @@
             <div class="project-img-wrapper">
               <!-- Ganti path gambar di bawah sesuai nama file foto kamu -->
               <img
-                src="./component/project2.png"
+                src="./component/clockJS.jpeg"
                 alt="Preview Project 2"
                 class="project-img"
               />
             </div>
             <div class="project-content">
-              <h3>Nama Proyek Kedua</h3>
+              <h3>Digital Clock</h3>
               <p>
-                Deskripsi singkat proyek kedua. Kamu bisa menjelaskan teknologi
-                yang kamu gunakan dalam membangun proyek ini.
+                Jam digital sederhana yang menampilkan waktu secara real-time.
               </p>
               <div class="project-tags">
-                <span>React</span>
-                <span>Express</span>
-                <span>MySQL</span>
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
               </div>
             </div>
           </div>
@@ -175,42 +206,35 @@
         <div class="experience-list">
           <!-- Experience 1 -->
           <div class="experience-card">
-            <div class="experience-date">Februari 2026 - Juni 2026</div>
+            <div class="experience-date">Feb 2026 - Jun 2026</div>
 
             <div class="experience-content">
-              <h3>Staff Gudang</h3>
+              <h3>Part-time Staff</h3>
 
               <h4>J&T Drop Point</h4>
-
-              <!-- Tuliskan deskripsi pengalaman kerja kamu di sini. Misalnya tugas, tanggung jawab, atau pekerjaan yang pernah dilakukan. -->
-              <p>aowkaowk</p>
+              <p>
+                Membantu operasional harian di J&T Drop Point dalam penanganan
+                alur masuk dan keluar paket agar proses sortir serta
+                pendistribusian berjalan lancar.
+              </p>
 
               <ul>
                 <!-- Deskripsi Pekerjaan -->
-                <li>Ngopi</li>
-                <li>Ngoding</li>
-                <li>Nyantuy</li>
+                <li>
+                  Melakukan scan resi <i>inbound & outbound</i> barang secara
+                  teliti untuk memperbarui status lacak paket di sistem
+                </li>
+                <li>
+                  Membantu proses bongkar muat paket dari armada pengiriman
+                  dengan menjaga keamanan barang agar tidak rusak
+                </li>
+                <li>
+                  Menyeleksi dan memilah paket berdasarkan area tujuan
+                  pengiriman untuk mempermudah alokasi kurir
+                </li>
               </ul>
             </div>
           </div>
-
-          <!-- Experience 2 -->
-          <!-- <div class="experience-card">
-            <div class="experience-date">tanggal</div>
-
-            <div class="experience-content">
-              <h3>Nama Posisi / Jabatan</h3>
-
-              <h4>Nama Perusahaan</h4>
-
-              <p>Tuliskan deskripsi pengalaman kerja kamu di sini.</p>
-
-              <ul>
-                <li>Deskripsi pekerjaan pertama</li>
-                <li>Deskripsi pekerjaan kedua</li>
-                <li>Deskripsi pekerjaan ketiga</li>
-              </ul>
-            </div> -->
         </div>
       </div>
     </section>
@@ -219,7 +243,10 @@
     <section class="section-contact" id="contact">
       <div class="container-contact">
         <h2>Contact Me</h2>
-        <p>Kalau ingin menghubungi saya, silakan isi form di bawah ini.</p>
+        <p>
+          Punya pertanyaan, ingin ngobrol, atau sekadar menyapa? Silakan hubungi
+          saya melalui form atau kontak di bawah.
+        </p>
 
         <div class="contact-card">
           <form id="contact-form">
@@ -324,17 +351,10 @@
         <div class="footer-content">
           <h3>My Website.</h3>
           <p>
-            Website sederhana sebagai bagian dari perjalanan saya belajar HTML &
-            CSS.
+            Website portfolio sederhana yang saya buat sebagai bagian dari
+            perjalanan belajar dan mengembangkan kemampuan saya di bidang web
+            development.
           </p>
-        </div>
-
-        <div class="footer-links">
-          <a href="#">Home</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
-          <a href="#experience">Experience</a>
         </div>
       </div>
 
