@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
     <title>My Web</title>
   </head>
 
@@ -94,43 +98,258 @@
       </div>
     </section>
 
-    <!-- Section Card Skills -->
+    <!-- Section Skills -->
     <section class="section-skills" id="skills">
       <div class="container-skills">
-        <h2>Keahlian</h2>
-        <p>
-          Beberapa teknologi dan hal yang sedang saya pelajari dalam perjalanan
-          web development.
-        </p>
+        <div class="skills-heading">
+          <span class="section-label">MY SKILLS</span>
 
-        <div class="skills-card">
-          <div class="skill-item">
-            <span>HTML</span>
-          </div>
+          <h2>Keahlian <span>Saya</span></h2>
 
-          <div class="skill-item">
-            <span>CSS</span>
-          </div>
-
-          <div class="skill-item">
-            <span>JavaScript</span>
-          </div>
-
-          <div class="skill-item">
-            <span>Git</span>
-          </div>
-
-          <div class="skill-item">
-            <span>Responsive Design</span>
-          </div>
+          <p>
+            Beberapa teknologi dan tools yang sedang saya pelajari dalam
+            perjalanan web development.
+          </p>
         </div>
 
-        <div class="learning">
-          <h3>Currently Learning</h3>
+        <!-- Skill Navigation -->
+        <div class="skills-tabs">
+          <button class="skill-tab active" data-category="frontend">
+            Frontend
+          </button>
 
-          <div class="learning-tags">
-            <span>React</span>
-            <span>Express.js</span>
+          <button class="skill-tab" data-category="backend">Backend</button>
+
+          <button class="skill-tab" data-category="tools">Tools</button>
+        </div>
+
+        <!-- Skill Content -->
+        <div class="skills-content">
+          <!--  FRONTEND  -->
+
+          <div class="skill-category active" id="frontend">
+            <div class="category-title">
+              <h3>Frontend</h3>
+
+              <p>
+                Teknologi yang digunakan untuk membangun tampilan dan interaksi
+                pada website.
+              </p>
+            </div>
+
+            <div class="skills-grid">
+              <!-- HTML -->
+              <div class="skill-card">
+                <div class="skill-card-header">
+                  <div class="skill-icon html-icon">
+                    <i class="fa-brands fa-html5"></i>
+                  </div>
+
+                  <div class="skill-info">
+                    <h3>HTML</h3>
+                    <p>Struktur dan semantic web</p>
+                  </div>
+
+                  <span class="skill-percent"> 80% </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 80%"></div>
+                </div>
+              </div>
+
+              <!-- CSS -->
+              <div class="skill-card">
+                <div class="skill-card-header">
+                  <i class="fa-brands fa-css3-alt"></i>
+
+                  <div class="skill-info">
+                    <h3>CSS</h3>
+                    <p>Styling dan responsive design</p>
+                  </div>
+
+                  <span class="skill-percent"> 70% </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 70%"></div>
+                </div>
+              </div>
+
+              <!-- JavaScript -->
+              <div class="skill-card">
+                <div class="skill-card-header">
+                  <i class="fa-brands fa-js"></i>
+
+                  <div class="skill-info">
+                    <h3>JavaScript</h3>
+                    <p>Logic, DOM dan interaktivitas</p>
+                  </div>
+
+                  <span class="skill-percent"> 50% </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 50%"></div>
+                </div>
+              </div>
+
+              <!-- Responsive Design -->
+              <div class="skill-card">
+                <div class="skill-card-header">
+                  <i class="fa-solid fa-mobile-screen"></i>
+
+                  <div class="skill-info">
+                    <h3>Responsive Design</h3>
+                    <p>Tampilan untuk berbagai device</p>
+                  </div>
+
+                  <span class="skill-percent"> 70% </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 70%"></div>
+                </div>
+              </div>
+
+              <!-- React -->
+              <div class="skill-card learning-skill">
+                <div class="skill-card-header">
+                  <i class="fa-brands fa-react"></i>
+
+                  <div class="skill-info">
+                    <h3>React</h3>
+                    <p>Currently Learning</p>
+                  </div>
+
+                  <span class="skill-percent"> 40% </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 40%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--  BACKEND  -->
+
+          <div class="skill-category" id="backend">
+            <div class="category-title">
+              <h3>Backend</h3>
+
+              <p>
+                Teknologi yang digunakan untuk membangun logic dan server-side
+                aplikasi.
+              </p>
+            </div>
+
+            <div class="skills-grid">
+              <!-- Express -->
+              <div class="skill-card learning-skill">
+                <div class="skill-card-header">
+                  <i class="fa-solid fa-server"></i>
+
+                  <div class="skill-info">
+                    <h3>Express.js</h3>
+                    <p>Currently Learning</p>
+                  </div>
+
+                  <span class="skill-percent"> 30% </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 30%"></div>
+                </div>
+              </div>
+
+              <!-- Node.js -->
+              <div class="skill-card coming-soon">
+                <div class="skill-card-header">
+                  <div class="skill-icon node-icon">JS</div>
+
+                  <div class="skill-info">
+                    <h3>Node.js</h3>
+                    <p>Coming Soon</p>
+                  </div>
+
+                  <span class="skill-percent"> — </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 0%"></div>
+                </div>
+              </div>
+
+              <!-- PostgreSQL -->
+              <div class="skill-card coming-soon">
+                <div class="skill-card-header">
+                  <div class="skill-icon database-icon">DB</div>
+
+                  <div class="skill-info">
+                    <h3>PostgreSQL</h3>
+                    <p>Coming Soon</p>
+                  </div>
+
+                  <span class="skill-percent"> — </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 0%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--  TOOLS  -->
+
+          <div class="skill-category" id="tools">
+            <div class="category-title">
+              <h3>Tools</h3>
+
+              <p>
+                Tools yang saya gunakan untuk membantu proses development dan
+                pengelolaan project.
+              </p>
+            </div>
+
+            <div class="skills-grid">
+              <!-- Git -->
+              <div class="skill-card">
+                <div class="skill-card-header">
+                  <i class="fa-brands fa-git-alt"></i>
+
+                  <div class="skill-info">
+                    <h3>Git</h3>
+                    <p>Version control dan repository</p>
+                  </div>
+
+                  <span class="skill-percent"> 60% </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 60%"></div>
+                </div>
+              </div>
+
+              <!-- VS Code -->
+              <div class="skill-card">
+                <div class="skill-card-header">
+                  <i class="fa-solid fa-code"></i>
+
+                  <div class="skill-info">
+                    <h3>VS Code</h3>
+                    <p>Code editor untuk development</p>
+                  </div>
+
+                  <span class="skill-percent"> 80% </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 80%"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -148,20 +367,20 @@
             <div class="project-img-wrapper">
               <!-- Ganti path gambar di bawah sesuai nama file foto kamu -->
               <img
-                src="./component/project1.png"
-                alt="Preview Project 1"
+                src="./component/saklar.jpeg"
+                alt="Saklar lampu sederhana"
                 class="project-img"
               />
             </div>
             <div class="project-content">
-              <h3>Nama Proyek Pertama</h3>
+              <h3>Saklar lampu</h3>
               <p>
-                Deskripsi singkat proyek kamu di sini. Jelaskan fitur utama atau
-                tujuan dari aplikasi/website yang telah dibuat.
+                Saklar lampu sederhana yang dapat menghidupkan dan mematikan lampu
+                dengan menggunakan JavaScript. Permulaan dari belajar DOM manipulation dan event handling.
               </p>
               <div class="project-tags">
                 <span>HTML</span>
-                <span>CSS</span>
+                <span>Tailwind CSS</span>
                 <span>JavaScript</span>
               </div>
             </div>
@@ -180,7 +399,7 @@
             <div class="project-content">
               <h3>Digital Clock</h3>
               <p>
-                Jam digital sederhana yang menampilkan waktu secara real-time.
+                Jam digital sederhana yang menampilkan waktu secara real-time. Belajar tentang penggunaan setInterval dan manipulasi DOM untuk memperbarui tampilan jam setiap detik.
               </p>
               <div class="project-tags">
                 <span>HTML</span>

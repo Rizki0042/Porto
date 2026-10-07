@@ -54,3 +54,35 @@ contactForm.addEventListener("submit", async (event) => {
         contactStatus.textContent = "Gagal menghubungi Server.";
     }
 });
+
+// =========================
+// SKILLS TAB
+// =========================
+
+const skillTabs = document.querySelectorAll(".skill-tab");
+const skillCategories = document.querySelectorAll(".skill-category");
+
+skillTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+
+    const category = tab.dataset.category;
+
+    // Hapus active dari semua tab
+    skillTabs.forEach((item) => {
+      item.classList.remove("active");
+    });
+
+    // Tambahkan active ke tab yang diklik
+    tab.classList.add("active");
+
+    // Sembunyikan semua category
+    skillCategories.forEach((item) => {
+      item.classList.remove("active");
+    });
+
+    // Tampilkan category yang dipilih
+    const selectedCategory = document.getElementById(category);
+
+    selectedCategory.classList.add("active");
+  });
+});
