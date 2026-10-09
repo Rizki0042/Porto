@@ -55,9 +55,7 @@ contactForm.addEventListener("submit", async (event) => {
     }
 });
 
-// =========================
 // SKILLS TAB
-// =========================
 
 const skillTabs = document.querySelectorAll(".skill-tab");
 const skillCategories = document.querySelectorAll(".skill-category");
