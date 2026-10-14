@@ -1,233 +1,249 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const db = require("./database");
-
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+const STATUS_VALID = ["Baru", "Dibaca", "Selesai"];
+
+
+function validasiKontak({ nama, email, pesan }) {
+  if (
+    typeof nama !== "string" ||
+    typeof email !== "string" ||
+    typeof pesan !== "string"
+  ) {
+    return "Nama, email, dan pesan wajib diisi!";
+  }
+  const data = {
+    nama: nama.trim(),
+    email: email.trim(),
+    pesan: pesan.trim(),
+  };
+
+  if (!data.nama || !data.email || !data.pesan) {
+    return "Nama, email, dan pesan wajib diisi!";
+  }
+
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailValid.test(data.email)) {
+    return "Format email tidak valid!";
+  }
+
+  return null;
+}
+function validasiId(id) {
+    return /^\d+$/.test(id) &&
+        Number.isSafeInteger(Number(id)) &&
+        Number(id) > 0;
+}
 
 app.get("/", (req, res) => {
-    res.send("Backend Website berjalan!!");
+  res.send("Backend Website berjalan!!");
+});
+
+app.get("/contact", async (req, res) => {
+  try {
+    const result = await db.query("SELECT * FROM contact ORDER BY id DESC");
+    res.status(200).json({
+      message: "Data Kontak berhasil diambil!",
+      data: result.rows,
+    });
+  } catch (err) {
+    console.error("Gagal mengambil data kontak:", err.message);
+
+    res.status(500).json({
+      message: "Gagal mengambil data kontak",
+    });
+  }
+});
+
+app.get("/contact/count", async (req, res) => {
+  try {
+    const result = await db.query("SELECT COUNT(*) AS total FROM contact");
+    res.status(200).json({
+      message: "Berhasil menghitung kontak",
+      total: Number(result.rows[0].total),
+    });
+  } catch (err) {
+    console.error("Gagal menghitung kontak", err.message);
+
+    res.status(500).json({
+      message: "Gagal menghitung kontak",
+    });
+  }
+});
+
+app.get("/contact/latest", async (req, res) => {
+  try {
+    const result = await db.query(
+      "SELECT * FROM contact ORDER BY id DESC LIMIT 5",
+    );
+    res.status(200).json({
+      message: "Berhasil mengambil data kontak terbaru!",
+      data: result.rows,
+    });
+  } catch (err) {
+    console.error("Gagal mengambil data kontak terbaru:", err.message);
+
+    res.status(500).json({
+      message: "Gagal mengambil data kontak!",
+    });
+  }
 });
 
 //POST contact
-app.post("/contact", (req, res) => {
-    const { nama, email, pesan } = req.body;
 
-    const sql = `
-    INSERT INTO contact (nama, email, pesan)
-    VALUES(?, ?, ?)`;
+app.post("/contact", async (req, res) => {
+  try {
+    const error = validasiKontak(req.body ?? {});
 
-    db.query(sql, [nama, email, pesan], (err, result) => {
-        if (err) {
-            console.log(err);
-            return res.status(500).json({
-                message: "Gagal menyimpan pesan"
-            });
-        }
-
-        res.status(201).json({
-            message: "Pesan berhasil dikirim!",
-            data: {
-                id : result.insertId,
-                nama,
-                email,
-                pesan
-            }
-        });
-    });
-});
-
-app.get("/contact", (req, res) => {
-    const sql = "SELECT * FROM contact";
-
-    db.query(sql, (err, results) => {
-        if (err) {
-            console.log(err);
-            return res.status(500).json({
-                message: "Gagal mengambil data kontak"
-            });
-        }
-
-        res.status(200).json({
-            message: "Data kontak berhasil diambil!",
-            data: results
-        });
-    });
-});
-
-app.get("/contact/count", (req, res) => {
-
-    const sql = "SELECT COUNT(*) AS total FROM contact";
-
-    db.query(sql, (err, result) => {
-
-        if (err) {
-            console.log(err);
-
-            return res.status(500).json({
-                message: "Gagal menghitung contact"
-            });
-        }
-
-        res.status(200).json({
-            message: "Berhasil menghitung contact",
-            total: result[0].total
-        });
-
-    });
-
-});
-
-app.get("/contact/latest", (req, res) => {
-    const sql =` SELECT * FROM contact ORDER BY id DESC LIMIT 5`;
-
-    db.query(sql, (err, result) => {
-        if (err) {
-            console.log(err);
-
-            return res.status(500).json({
-                message: "Gagal mengambil data contact terbaru"
-            });
-        }
-
-        res.status(200).json({
-            message: "Berhasil mengambil data contact terbaru",
-            data: result
-        });
-    });
-});
-
-app.delete("/contact/:id", (req, res) => {
-
-    const id = req.params.id;
-
-    const sql = "DELETE FROM contact WHERE id = ?";
-
-    db.query(sql, [id], (err, result) => {
-
-        if (err) {
-            console.log(err);
-
-            return res.status(500).json({
-                message: "Gagal menghapus contact"
-            });
-        }
-
-        if (result.affectedRows === 0) {
-            return res.status(404).json({
-                message: "Data contact tidak ditemukan"
-            });
-        }
-
-        res.status(200).json({
-            message: "Contact berhasil dihapus"
-        });
-    });
-});
-
-app.put("/contact/:id", (req, res) => {
-
-    const id = req.params.id;
-
-    const { nama, email, pesan } = req.body;
-
-    console.log("ID:", id);
-    console.log("Data baru:", nama, email, pesan);
-
-    const sql = `
-        UPDATE contact
-        SET nama = ?, email = ?, pesan = ?
-        WHERE id = ?
-    `;
-
-    db.query(
-        sql,
-        [nama, email, pesan, id],
-        (err, result) => {
-
-            if (err) {
-                console.log("Error UPDATE:", err);
-
-                return res.status(500).json({
-                    message: "Gagal mengupdate contact"
-                });
-            }
-
-            console.log("Hasil UPDATE:", result);
-
-            if (result.affectedRows === 0) {
-
-                return res.status(404).json({
-                    message: "Data contact tidak ditemukan atau tidak ada perubahan"
-                });
-
-            }
-
-            res.status(200).json({
-                message: "Contact berhasil diupdate"
-            });
-
-        }
-    );
-});
-
-app.patch("/contact/:id/status", (req, res) => {
-
-    const id = req.params.id;
-    const { status } = req.body;
-
-    const statusValid = [
-        "Baru",
-        "Dibaca",
-        "Selesai"
-    ];
-
-    if (!statusValid.includes(status)) {
-
-        return res.status(400).json({
-            message: "Status tidak valid"
-        });
-
+    if (error) {
+      return res.status(400).json({
+        message: error,
+      });
     }
 
-    const sql = `
-        UPDATE contact
-        SET status = ?
-        WHERE id = ?
-    `;
+    const { nama, email, pesan } = req.body;
 
-    db.query(sql, [status, id], (err, result) => {
+    const result = await db.query(
+      `INSERT INTO contact (nama, email, pesan)
+             VALUES ($1, $2, $3)
+             RETURNING id`,
+      [nama.trim(), email.trim(), pesan.trim()],
+    );
 
-        if (err) {
-
-            console.log(err);
-
-            return res.status(500).json({
-                message: "Gagal mengubah status"
-            });
-
-        }
-
-        if (result.affectedRows === 0) {
-
-            return res.status(404).json({
-                message: "Contact tidak ditemukan"
-            });
-
-        }
-
-        res.status(200).json({
-            message: "Status berhasil diubah"
-        });
-
+    res.status(201).json({
+      message: "Pesan berhasil disimpan!",
+      id: result.rows[0].id,
     });
+  } catch (err) {
+    console.error("Gagal menyimpan pesan:", err.message);
 
+    res.status(500).json({
+      message: "Gagal menyimpan pesan!",
+    });
+  }
+});
+
+//DELETE
+app.delete("/contact/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    if (!validasiId(id)) {
+      return res.status(400).json({
+        message: "ID kontak tidak valid",
+      });
+    }
+    const result = await db.query("DELETE FROM contact WHERE id = $1", [id]);
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({
+        message: "Data kontak tidak ditemukan",
+      });
+    }
+
+    res.status(200).json({
+      message: "Contact berhasil dihapus",
+    });
+  } catch (err) {
+    console.error("Gagal menghapus data kontak:", err.message);
+
+    res.status(500).json({
+      message: "Gagal menghapus kontak",
+    });
+  }
+});
+
+//PUT
+
+app.put("/contact/:id", async (req, res) => {
+  try {
+    const error = validasiKontak(req.body ?? {});
+
+    if (error) {
+      return res.status(400).json({
+        message: error,
+      });
+    }
+
+    const { nama, email, pesan } = req.body;
+    const { id } = req.params;
+    if (!validasiId(id)) {
+    return res.status(400).json({
+        message: "ID kontak tidak valid"
+    });
+}
+
+    const result = await db.query(
+      `UPDATE contact
+             SET nama = $1, email = $2, pesan = $3
+             WHERE id = $4`,
+      [nama.trim(), email.trim(), pesan.trim(), id],
+    );
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({
+        message: "Data kontak tidak ditemukan",
+      });
+    }
+
+    res.status(200).json({
+      message: "Berhasil update kontak",
+    });
+  } catch (err) {
+    console.error("Gagal mengupdate kontak:", err.message);
+
+    res.status(500).json({
+      message: "Gagal mengupdate kontak",
+    });
+  }
+});
+
+//PATCH
+app.patch("/contact/:id/status", async (req, res) => {
+  try {
+    const id = req.params.id;
+    if (!validasiId(id)) {
+    return res.status(400).json({
+        message: "ID kontak tidak valid"
+    });
+}
+    const { status } = req.body ?? {};
+
+    if (!STATUS_VALID.includes(status)) {
+      return res.status(400).json({
+        message: "Status tidak valid",
+      });
+    }
+
+    const result = await db.query(
+      "UPDATE contact SET status = $1 WHERE id = $2",
+      [status, id],
+    );
+    if (result.rowCount === 0) {
+      return res.status(404).json({
+        message: "Data kontak tidak ditemukan",
+      });
+    }
+
+    res.status(200).json({
+      message: "Status berhasil diubah",
+    });
+  } catch (err) {
+    console.error("Gagal mengubah status:", err.message);
+
+    res.status(500).json({
+      message: "Gagal mengubah status data",
+    });
+  }
 });
 
 app.listen(PORT, () => {
-    console.log(`Server berjalan di https://localhost: ${PORT}`);
+    console.log(`Server berjalan di http://localhost:${PORT}`);
 });

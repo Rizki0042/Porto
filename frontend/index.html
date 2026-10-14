@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <title>Portofolio</title>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="container-navbar">
+        <ul class="ul-navbar">
+          <li class="li-navbar"><a href="#">Beranda</a></li>
+          <li class="li-navbar"><a href="#about">Tentang</a></li>
+          <li class="li-navbar"><a href="#skills">Keahlian</a></li>
+          <li class="li-navbar"><a href="#projects">Proyek</a></li>
+          <li class="li-navbar"><a href="#experience">Pengalaman</a></li>
+          <li class="li-navbar"><a href="#contact">Contact</a></li>
+          <li class="li-navbar">
+            <button
+              class="theme-toggle"
+              id="theme-toggle"
+              type="button"
+              aria-label="Aktifkan mode gelap"
+              aria-pressed="false"
+            >
+              <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Section permulaan -->
+    <section class="section-hero" id="home">
+      <div class="hero-content">
+        <div class="hero-image">
+          <img src="/component/ganteng.png" alt="Foto Pribadi" />
+        </div>
+
+        <div class="hero-text">
+          <p class="hero-subtitle">Hello, I'M Rizki</p>
+          <h1>Pelajar yang sedang belajar Web Development Cuy</h1>
+
+          <p class="hero-description">
+            Saya sedang membangun kemampuan di bidang web development, mulai
+            dari HTML dan CSS hingga JavaScript, sambil terus belajar dan
+            membuat berbagai project.
+          </p>
+
+          <div class="hero-button-wrapper">
+            <a href="#about" class="hero-button">Kenal Saya → </a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-decoration"></div>
+    </section>
+
+    <!-- Section About me -->
+    <section class="section-aboutme" id="about">
+      <div class="container-aboutme">
+        <div class="about-text">
+          <h2>Tentang Saya</h2>
+          <h3>Halo, saya Rizki 👋</h3>
+
+          <p>
+            Saya lagi belajar dan mengembangkan kemampuan di bidang web
+            development. Saat ini saya fokus memperkuat HTML, CSS, dan
+            JavaScript, sambil mulai mengenal React, Express, dan database.
+          </p>
+
+          <p>
+            Saya suka belajar hal baru, mencoba bikin sesuatu dari apa yang saya
+            pelajari, dan terus berkembang sedikit demi sedikit. Buat saya,
+            nggak harus langsung jago — yang penting terus belajar dan nggak
+            berhenti mencoba.
+          </p>
+
+          <p>
+            Dari hal-hal sederhana yang saya pelajari, saya ingin terus
+            berkembang dan suatu saat bisa membuat sesuatu yang benar-benar
+            berguna.
+          </p>
+
+          <div class="about-tags">
+            <span>💻 Web Development</span>
+            <span>📚 Always Learning</span>
+            <span>🛠️ Building Projects</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Skills -->
+    <section class="section-skills" id="skills">
+      <div class="container-skills">
+        <div class="skills-heading">
+          <span class="section-label">MY SKILLS</span>
+
+          <h2>Keahlian</h2>
+
+          <p>
+            Beberapa teknologi dan tools yang sedang saya pelajari dalam
+            perjalanan web development.
+          </p>
+        </div>
+
+        <!-- Skill Navigation -->
+        <div class="skills-tabs">
+          <button class="skill-tab active" data-category="frontend">
+            Frontend
+          </button>
+
+          <button class="skill-tab" data-category="backend">Backend</button>
+
+          <button class="skill-tab" data-category="tools">Tools</button>
+        </div>
+
+        <!-- Skill Content -->
+        <div class="skills-content">
+          <!--  FRONTEND  -->
+
+          <div class="skill-category active" id="frontend">
+            <div class="category-title">
+              <h3>Frontend</h3>
+
+              <p>
+                Teknologi yang digunakan untuk membangun tampilan dan interaksi
+                pada website.
+              </p>
+            </div>
+
+            <div class="skills-grid">
+              <!-- HTML -->
+              <div class="skill-card">
+                <div class="skill-card-header">
+                  <div class="skill-icon html-icon">
+                    <i class="fa-brands fa-html5"></i>
+                  </div>
+
+                  <div class="skill-info">
+                    <h3>HTML</h3>
+                    <p>Struktur dan semantic web</p>
+                  </div>
+
+                  <span class="skill-percent"> 70% </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 70%"></div>
+                </div>
+              </div>
+
+              <!-- CSS -->
+              <div class="skill-card">
+                <div class="skill-card-header">
+                  <div class="skill-icon css-icon">
+                    <i class="fa-brands fa-css3-alt"></i>
+                  </div>
+
+                  <div class="skill-info">
+                    <h3>CSS</h3>
+                    <p>Styling dan responsive design</p>
+                  </div>
+
+                  <span class="skill-percent"> 60% </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 60%"></div>
+                </div>
+              </div>
+
+              <!-- JavaScript -->
+              <div class="skill-card">
+                <div class="skill-card-header">
+                  <div class="skill-icon js-icon">
+                    <i class="fa-brands fa-js"></i>
+                  </div>
+
+                  <div class="skill-info">
+                    <h3>JavaScript</h3>
+                    <p>Logic, DOM dan interaktivitas</p>
+                  </div>
+
+                  <span class="skill-percent"> 40% </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 40%"></div>
+                </div>
+              </div>
+
+              <!-- Responsive Design -->
+              <div class="skill-card">
+                <div class="skill-card-header">
+                  <div class="skill-icon responsive-icon">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                  </div>
+
+                  <div class="skill-info">
+                    <h3>Responsive Design</h3>
+                    <p>Tampilan untuk berbagai device</p>
+                  </div>
+
+                  <span class="skill-percent"> 70% </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 70%"></div>
+                </div>
+              </div>
+
+              <!-- React -->
+              <div class="skill-card learning-skill">
+                <div class="skill-card-header">
+                  <div class="skill-icon react-icon">
+                    <i class="fa-brands fa-react"></i>
+                  </div>
+
+                  <div class="skill-info">
+                    <h3>React</h3>
+                    <p>Currently Learning</p>
+                  </div>
+
+                  <span class="skill-percent"> 30% </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 30%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--  BACKEND  -->
+
+          <div class="skill-category" id="backend">
+            <div class="category-title">
+              <h3>Backend</h3>
+
+              <p>
+                Teknologi yang digunakan untuk membangun logic dan server-side
+                aplikasi.
+              </p>
+            </div>
+
+            <div class="skills-grid">
+              <!-- Express -->
+              <div class="skill-card learning-skill">
+                <div class="skill-card-header">
+                  <div class="skill-icon express-icon">
+                    <i class="fa-solid fa-server"></i>
+                  </div>
+
+                  <div class="skill-info">
+                    <h3>Express.js</h3>
+                    <p>Currently Learning</p>
+                  </div>
+
+                  <span class="skill-percent"> 30% </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 30%"></div>
+                </div>
+              </div>
+
+              <!-- Node.js -->
+              <div class="skill-card coming-soon">
+                <div class="skill-card-header">
+                  <div class="skill-icon node-icon">JS</div>
+
+                  <div class="skill-info">
+                    <h3>Node.js</h3>
+                    <p>Coming Soon</p>
+                  </div>
+
+                  <span class="skill-percent"> — </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 0%"></div>
+                </div>
+              </div>
+
+              <!-- PostgreSQL -->
+              <div class="skill-card coming-soon">
+                <div class="skill-card-header">
+                  <div class="skill-icon database-icon">DB</div>
+
+                  <div class="skill-info">
+                    <h3>PostgreSQL</h3>
+                    <p>Coming Soon</p>
+                  </div>
+
+                  <span class="skill-percent"> — </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 0%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--  TOOLS  -->
+
+          <div class="skill-category" id="tools">
+            <div class="category-title">
+              <h3>Tools</h3>
+
+              <p>
+                Tools yang saya gunakan untuk membantu proses development dan
+                pengelolaan project.
+              </p>
+            </div>
+
+            <div class="skills-grid">
+              <!-- Git -->
+              <div class="skill-card">
+                <div class="skill-card-header">
+                  <div class="skill-icon git-icon">
+                    <i class="fa-brands fa-git-alt"></i>
+                  </div>
+
+                  <div class="skill-info">
+                    <h3>Git</h3>
+                    <p>Version control dan repository</p>
+                  </div>
+
+                  <span class="skill-percent"> 30% </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 30%"></div>
+                </div>
+              </div>
+
+              <!-- VS Code -->
+              <div class="skill-card">
+                <div class="skill-card-header">
+                  <div class="skill-icon vscode-icon">
+                    <i class="fa-solid fa-code"></i>
+                  </div>
+
+                  <div class="skill-info">
+                    <h3>VS Code</h3>
+                    <p>Code editor untuk development</p>
+                  </div>
+
+                  <span class="skill-percent"> 60% </span>
+                </div>
+
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 60%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Projects -->
+    <section class="section-projects" id="projects">
+      <div class="container-projects">
+        <h2>Proyek</h2>
+        <p>Beberapa proyek dan aplikasi yang telah saya kembangkan.</p>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="project-img-wrapper">
+              <!-- Ganti path gambar di bawah sesuai nama file foto kamu -->
+              <img
+                src="/component/saklar.jpeg"
+                alt="Saklar lampu sederhana"
+                class="project-img"
+              />
+            </div>
+            <div class="project-content">
+              <h3>Saklar lampu</h3>
+              <p>
+                Saklar lampu sederhana yang dapat menghidupkan dan mematikan lampu
+                dengan menggunakan JavaScript. Permulaan dari belajar DOM manipulation dan event handling.
+              </p>
+              <div class="project-tags">
+                <span>HTML</span>
+                <span>JavaScript</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="project-img-wrapper">
+              <!-- Ganti path gambar di bawah sesuai nama file foto kamu -->
+              <img
+                src="/component/clockJS.jpeg"
+                alt="Preview Project 2"
+                class="project-img"
+              />
+            </div>
+            <div class="project-content">
+              <h3>Digital Clock</h3>
+              <p>
+                Jam digital sederhana yang menampilkan waktu secara real-time. Belajar tentang penggunaan setInterval dan manipulasi DOM untuk memperbarui tampilan jam setiap detik.
+              </p>
+              <div class="project-tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Section Experience-->
+
+    <section class="section-experience" id="experience">
+      <div class="container-experience">
+        <h2>Pengalaman Kerja</h2>
+
+        <p class="experience-description">
+          Beberapa pengalaman kerja dan kegiatan yang pernah saya jalani.
+        </p>
+
+        <div class="experience-list">
+          <!-- Experience 1 -->
+          <div class="experience-card">
+            <div class="experience-date">Feb 2026 - Jun 2026</div>
+
+            <div class="experience-content">
+              <h3>Part-time Staff</h3>
+
+              <h4>J&T Drop Point</h4>
+              <p>
+                Membantu operasional harian di J&T Drop Point dalam penanganan
+                alur masuk dan keluar paket agar proses sortir serta
+                pendistribusian berjalan lancar.
+              </p>
+
+              <ul>
+                <!-- Deskripsi Pekerjaan -->
+                <li>
+                  Melakukan scan resi <i>inbound & outbound</i> barang secara
+                  teliti untuk memperbarui status lacak paket di sistem
+                </li>
+                <li>
+                  Membantu proses bongkar muat paket dari armada pengiriman
+                  dengan menjaga keamanan barang agar tidak rusak
+                </li>
+                <li>
+                  Menyeleksi dan memilah paket berdasarkan area tujuan
+                  pengiriman untuk mempermudah alokasi kurir
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section class="section-contact" id="contact">
+      <div class="container-contact">
+        <h2>Contact Me</h2>
+        <p>
+          Punya pertanyaan, ingin ngobrol, atau sekadar menyapa? Silakan hubungi
+          saya melalui form atau kontak di bawah.
+        </p>
+
+        <div class="contact-card">
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="name">Nama</label>
+              <input
+                type="text"
+                id="name"
+                placeholder="Masukkan nama kamu"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Masukkan email kamu"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Pesan</label>
+              <textarea
+                id="message"
+                rows="5"
+                placeholder="Tulis pesan kamu..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit">Kirim Pesan</button>
+
+            <p id="contact-status"></p>
+          </form>
+          <!-- Alternative Contact -->
+          <div class="alt-contact">
+            <p class="alt-contact-title">
+              Atau anda bisa hubungi saya lewat link dibawah ini:
+            </p>
+            <div class="contact-direct-info">
+              <a
+                href="https://instagram.com/rizki_rhmd"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="direct-link"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path
+                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                  ></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span>@Rizki_rhmd</span>
+              </a>
+
+              <a
+                href="https://wa.me/628970645466"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="direct-link"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+                  ></path>
+                </svg>
+                <span>+62 897-0645-466</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container-footer">
+        <div class="footer-content">
+          <h3>My Website.</h3>
+          <p>
+            Website portfolio sederhana yang saya buat sebagai bagian dari
+            perjalanan belajar dan mengembangkan kemampuan saya di bidang web
+            development.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 My website. Made by Rizki Rahmad.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
