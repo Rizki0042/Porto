@@ -28,7 +28,7 @@ contactForm.addEventListener("submit", async (event) => {
     const pesan = document.getElementById("message").value;
 
     try {
-        const response = await fetch("http://localhost:3000/contact", {
+        const response = await fetch("https://hypetext-api.vercel.app/contact", {
             method: "POST",
 
             headers: {

@@ -1,7 +1,7 @@
 
 async function loadDashboard() {
   try {
-    const response = await fetch("http://localhost:3000/contact");
+    const response = await fetch("https://hypetext-api.vercel.app/contact");
     const result = await response.json();
 
     if (!response.ok) {

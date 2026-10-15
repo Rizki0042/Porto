@@ -5,7 +5,7 @@ let contactsData = [];
 // GET ALL CONTACT
 async function getContacts() {
   try {
-    const response = await fetch("http://localhost:3000/contact");
+    const response = await fetch("https://hypetext-api.vercel.app/contact");
     const result = await response.json();
 
     if (!response.ok) {
@@ -102,7 +102,7 @@ async function deleteContact(id) {
   }
 
   try {
-    const response = await fetch(`http://localhost:3000/contact/${id}`, {
+    const response = await fetch(`https://hypetext-api.vercel.app/contact/${id}`, {
       method: "DELETE",
     });
 
@@ -130,7 +130,7 @@ async function updateStatus(id, selectElement) {
   const status = selectElement.value;
 
   try {
-    const response = await fetch(`http://localhost:3000/contact/${id}/status`, {
+    const response = await fetch(`https://hypetext-api.vercel.app/contact/${id}/status`, {
       method: "PATCH",
 
       headers: {
@@ -219,7 +219,7 @@ editForm.addEventListener("submit", async (event) => {
   const pesan = document.getElementById("edit-pesan").value;
 
   try {
-    const response = await fetch(`http://localhost:3000/contact/${id}`, {
+    const response = await fetch(`https://hypetext-api.vercel.app/contact/${id}`, {
       method: "PUT",
 
       headers: {
