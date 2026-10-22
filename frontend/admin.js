@@ -1,11 +1,40 @@
 const contactTable = document.getElementById("contact-table");
-
 let contactsData = [];
+const API_URL =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1"
+        ? "http://localhost:3000"
+        : "https://hypetext-api.vercel.app";
+
+const adminToken = sessionStorage.getItem("adminToken");
+
+if (!adminToken) {
+    window.location.replace("login.html");
+}
+
+async function adminFetch(url, options = {}) {
+    const response = await fetch(url, {
+        ...options,
+        headers: {
+            ...options.headers,
+            Authorization: `Bearer ${adminToken}`,
+        },
+    });
+
+    if (response.status === 401) {
+        sessionStorage.removeItem("adminToken");
+        window.location.replace("login.html");
+
+        throw new Error("Sesi berakhir. Silakan login kembali.");
+    }
+
+    return response;
+}
 
 // GET ALL CONTACT
 async function getContacts() {
   try {
-    const response = await fetch("https://hypetext-api.vercel.app/contact");
+    const response = await adminFetch(`${API_URL}/contact`);
     const result = await response.json();
 
     if (!response.ok) {
@@ -92,8 +121,6 @@ async function getContacts() {
 
 
 // DELETE CONTACT
-
-
 async function deleteContact(id) {
   const yakin = confirm("Yakin ingin menghapus pesan ini?");
 
@@ -102,7 +129,7 @@ async function deleteContact(id) {
   }
 
   try {
-    const response = await fetch(`https://hypetext-api.vercel.app/contact/${id}`, {
+    const response = await adminFetch(`${API_URL}/contact/${id}`, {
       method: "DELETE",
     });
 
@@ -122,21 +149,16 @@ async function deleteContact(id) {
   }
 }
 
-// ===============================
-// UPDATE STATUS
-// ===============================
-
+//Update Status
 async function updateStatus(id, selectElement) {
   const status = selectElement.value;
 
   try {
-    const response = await fetch(`https://hypetext-api.vercel.app/contact/${id}/status`, {
+    const response = await adminFetch(`${API_URL}/contact/${id}/status`, {
       method: "PATCH",
-
       headers: {
         "Content-Type": "application/json",
       },
-
       body: JSON.stringify({
         status: status,
       }),
@@ -147,7 +169,6 @@ async function updateStatus(id, selectElement) {
     if (!response.ok) {
       throw new Error(result.message);
     }
-
     console.log(result.message);
 
     // Hapus class status sebelumnya
@@ -169,10 +190,7 @@ async function updateStatus(id, selectElement) {
   }
 }
 
-// ===============================
 // EDIT CONTACT
-// ===============================
-
 function editContact(id) {
   const contact = contactsData.find((contact) => contact.id === id);
 
@@ -193,18 +211,12 @@ function editContact(id) {
   document.getElementById("edit-modal").style.display = "flex";
 }
 
-// ===============================
 // CLOSE MODAL
-// ===============================
-
 function closeModal() {
   document.getElementById("edit-modal").style.display = "none";
 }
 
-// ===============================
-// UPDATE CONTACT
-// ===============================
-
+//UPDATE CONTACT
 const editForm = document.getElementById("edit-form");
 
 editForm.addEventListener("submit", async (event) => {
@@ -219,13 +231,11 @@ editForm.addEventListener("submit", async (event) => {
   const pesan = document.getElementById("edit-pesan").value;
 
   try {
-    const response = await fetch(`https://hypetext-api.vercel.app/contact/${id}`, {
+    const response = await adminFetch(`${API_URL}/contact/${id}`, {
       method: "PUT",
-
       headers: {
         "Content-Type": "application/json",
       },
-
       body: JSON.stringify({
         nama: nama,
         email: email,
@@ -251,8 +261,15 @@ editForm.addEventListener("submit", async (event) => {
   }
 });
 
-// ===============================
-// JALANKAN SAAT HALAMAN DIBUKA
-// ===============================
+if (adminToken){
+  getContacts();
+}
 
-getContacts();
+const logoutButton = document.getElementById("logout-button");
+
+logoutButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    sessionStorage.removeItem("adminToken");
+    window.location.replace("login.html");
+});

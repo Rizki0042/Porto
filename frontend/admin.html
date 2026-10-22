@@ -1,334 +1,182 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Admin - Contact</title>
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
-        padding: 40px;
-      }
-
-      h1 {
-        color: darkred;
-        margin-bottom: 10px;
-      }
-
-      .description {
-        color: #666;
-        margin-bottom: 30px;
-      }
-
-      .table-container {
-        background-color: white;
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        overflow-x: auto;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
-      th,
-      td {
-        padding: 15px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-      }
-
-      th {
-        background-color: darkred;
-        color: white;
-      }
-
-      tr:hover {
-        background-color: #f9f9f9;
-      }
-
-      .loading {
-        text-align: center;
-        padding: 20px;
-      }
-
-      .delete-button {
-        background-color: darkred;
-        color: white;
-        border: none;
-        padding: 8px 15px;
-        border-radius: 6px;
-        cursor: pointer;
-      }
-
-      .delete-button:hover {
-        background-color: #8b0000;
-      }
-
-      .edit-button,
-      .delete-button {
-        color: white;
-        border: none;
-        padding: 8px 14px;
-        border-radius: 6px;
-        cursor: pointer;
-        margin: 2px;
-      }
-
-      .edit-button {
-        background-color: #555;
-      }
-
-      .edit-button:hover {
-        background-color: #333;
-      }
-
-      .delete-button {
-        background-color: darkred;
-      }
-
-      .delete-button:hover {
-        background-color: #8b0000;
-      }
-
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-
-        left: 0;
-        top: 0;
-
-        width: 100%;
-        height: 100%;
-
-        background-color: rgba(0, 0, 0, 0.5);
-
-        justify-content: center;
-        align-items: center;
-      }
-
-      .modal-content {
-        width: 90%;
-        max-width: 550px;
-
-        background-color: white;
-
-        padding: 30px;
-
-        border-radius: 15px;
-
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      }
-
-      .modal-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        margin-bottom: 25px;
-      }
-
-      .modal-header h2 {
-        color: darkred;
-      }
-
-      .close-button {
-        border: none;
-        background: none;
-
-        font-size: 30px;
-
-        cursor: pointer;
-
-        color: #555;
-      }
-
-      .close-button:hover {
-        color: darkred;
-      }
-
-      .form-group {
-        margin-bottom: 20px;
-      }
-
-      .form-group label {
-        display: block;
-
-        margin-bottom: 8px;
-
-        font-weight: bold;
-      }
-
-      .form-group input,
-      .form-group textarea {
-        width: 100%;
-
-        padding: 12px;
-
-        border: 1px solid #ccc;
-
-        border-radius: 8px;
-
-        font-size: 15px;
-      }
-
-      .form-group input:focus,
-      .form-group textarea:focus {
-        outline: none;
-
-        border-color: darkred;
-      }
-
-      .modal-actions {
-        display: flex;
-
-        justify-content: flex-end;
-
-        gap: 10px;
-
-        margin-top: 25px;
-      }
-
-      .cancel-button,
-      .save-button {
-        border: none;
-
-        padding: 10px 18px;
-
-        border-radius: 7px;
-
-        cursor: pointer;
-
-        font-weight: bold;
-      }
-
-      .cancel-button {
-        background-color: #ddd;
-
-        color: #333;
-      }
-
-      .save-button {
-        background-color: darkred;
-
-        color: white;
-      }
-
-      .save-button:hover {
-        background-color: #8b0000;
-      }
-
-      .status-select {
-    padding: 6px 10px;
-
-    border-radius: 6px;
-
-    border: 1px solid #ddd;
-
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.status-baru {
-    background-color: #e3f2fd;
-    color: #1976d2;
-}
-
-.status-dibaca {
-    background-color: #fff8e1;
-    color: #f57c00;
-}
-
-.status-selesai {
-    background-color: #e8f5e9;
-    color: #2e7d32;
-}
-
-    </style>
+    <title>Kelola Contact | HypeText</title>
+    <link rel="stylesheet" href="shared.css"/>
+    <link rel="stylesheet" href="admin.css" />
   </head>
 
   <body>
-    <h1>Contact Messages</h1>
+    <div class="dashboard-layout">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <a href="dashboard.html" class="brand">
+          <span class="brand-icon">H</span>
+          <span>Hype<span class="brand-highlight">Text</span></span>
+        </a>
 
-    <p class="description">Daftar pesan yang dikirim melalui website.</p>
+        <p class="sidebar-label">MENU UTAMA</p>
 
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nama</th>
-            <th>Email</th>
-            <th>Pesan</th>
-            <th>Tanggal</th>
-            <th>Status</th>
-            <th>Aksi</th>
-          </tr>
-        </thead>
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-link">
+            <span class="nav-icon">▦</span>
+            Dashboard
+          </a>
 
-        <tbody id="contact-table">
-          <tr>
-            <td colspan="7" class="loading">Loading...</td>
-          </tr>
-        </tbody>
-      </table>
-      <div id="edit-modal" class="modal">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2>Edit Contact</h2>
+          <a href="admin.html" class="nav-link active">
+            <span class="nav-icon">✉</span>
+            Kelola Contact
+          </a>
+        </nav>
 
-            <button class="close-button" onclick="closeModal()">&times;</button>
+        <div class="sidebar-bottom">
+          <a href="index.html" class="nav-link">
+            <span class="nav-icon">↗</span>
+            Lihat Website
+          </a>
+
+          <button
+            type="button"
+            class="nav-link logout-button"
+            id="logout-button"
+          >
+            <span class="nav-icon">⇥</span>
+            Keluar
+          </button>
+        </div>
+      </aside>
+
+      <!-- Konten utama -->
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="topbar-label">ADMIN PANEL</p>
+            <h1>Kelola Contact</h1>
           </div>
 
-          <form id="edit-form">
-            <input type="hidden" id="edit-id" />
+          <div class="admin-profile">
+            <div class="profile-avatar">A</div>
+            <div class="profile-info">
+              <strong>Administrator</strong>
+              <span>Admin</span>
+            </div>
+          </div>
+        </header>
 
-            <div class="form-group">
-              <label for="edit-nama"> Nama </label>
+        <!-- Pengantar -->
+        <section class="welcome-section">
+          <div>
+            <p class="welcome-label">MANAJEMEN PESAN</p>
+            <h2>Pesan dari pengunjung</h2>
+            <p class="welcome-description">
+              Lihat, edit, dan perbarui status pesan yang masuk melalui
+              website HypeText.
+            </p>
+          </div>
+        </section>
 
-              <input type="text" id="edit-nama" required />
+        <!-- Tabel contact -->
+        <section class="content-card">
+          <div class="section-header">
+            <div>
+              <h2>Daftar Contact</h2>
+              <p>Kelola semua pesan yang diterima website.</p>
             </div>
 
-            <div class="form-group">
-              <label for="edit-email"> Email </label>
+            <a href="dashboard.html" class="back-link">
+              ← Dashboard
+            </a>
+          </div>
 
-              <input type="email" id="edit-email" required />
-            </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nama</th>
+                  <th>Email</th>
+                  <th>Pesan</th>
+                  <th>Tanggal</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
 
-            <div class="form-group">
-              <label for="edit-pesan"> Pesan </label>
+              <tbody id="contact-table">
+                <tr>
+                  <td colspan="7" class="loading">
+                    Memuat pesan...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
-              <textarea id="edit-pesan" rows="5" required></textarea>
-            </div>
+        <footer class="dashboard-footer">
+          <p>© 2026 HypeText Admin Panel</p>
+        </footer>
+      </main>
+    </div>
 
-            <div class="modal-actions">
-              <button
-                type="button"
-                class="cancel-button"
-                onclick="closeModal()"
-              >
-                Batal
-              </button>
+    <!-- Modal edit contact -->
+    <div id="edit-modal" class="modal">
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <div class="modal-header">
+          <div>
+            <p class="modal-eyebrow">MANAJEMEN PESAN</p>
+            <h2 id="modal-title">Edit Contact</h2>
+          </div>
 
-              <button type="submit" class="save-button">
-                Simpan Perubahan
-              </button>
-            </div>
-          </form>
+          <button
+            type="button"
+            class="close-button"
+            onclick="closeModal()"
+            aria-label="Tutup modal"
+          >
+            &times;
+          </button>
         </div>
+
+        <form id="edit-form">
+          <input type="hidden" id="edit-id" />
+
+          <div class="form-group">
+            <label for="edit-nama">Nama</label>
+            <input type="text" id="edit-nama" required />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-email">Email</label>
+            <input type="email" id="edit-email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-pesan">Pesan</label>
+            <textarea id="edit-pesan" rows="5" required></textarea>
+          </div>
+
+          <div class="modal-actions">
+            <button
+              type="button"
+              class="cancel-button"
+              onclick="closeModal()"
+            >
+              Batal
+            </button>
+
+            <button type="submit" class="save-button">
+              Simpan Perubahan
+            </button>
+          </div>
+        </form>
       </div>
     </div>
 

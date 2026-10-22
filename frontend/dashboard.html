@@ -1,292 +1,139 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Dashboard Admin</title>
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
-        color: #333;
-      }
-
-      .navbar {
-        background-color: darkred;
-        color: white;
-
-        padding: 20px 40px;
-
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .navbar h2 {
-        font-size: 24px;
-      }
-
-      .navbar a {
-        color: white;
-        text-decoration: none;
-      }
-
-      .container {
-        width: 90%;
-        max-width: 1100px;
-
-        margin: 40px auto;
-      }
-
-      .welcome {
-        margin-bottom: 30px;
-      }
-
-      .welcome h1 {
-        margin-bottom: 8px;
-      }
-
-      .welcome p {
-        color: #777;
-      }
-
-      .stats {
-        display: grid;
-
-        grid-template-columns: repeat(2, 1fr);
-
-        gap: 20px;
-
-        margin-bottom: 30px;
-      }
-
-      .card {
-        background-color: white;
-
-        padding: 25px;
-
-        border-radius: 15px;
-
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-      }
-
-      .card h3 {
-        color: #777;
-
-        margin-bottom: 10px;
-      }
-
-      .number {
-        font-size: 40px;
-
-        font-weight: bold;
-
-        color: darkred;
-      }
-
-      .menu {
-        display: flex;
-        gap: 15px;
-
-        margin-top: 20px;
-      }
-
-      .menu a {
-        background-color: darkred;
-
-        color: white;
-
-        text-decoration: none;
-
-        padding: 12px 18px;
-
-        border-radius: 8px;
-      }
-
-      .menu a:hover {
-        background-color: #8b0000;
-      }
-
-      .latest-section {
-    background-color: white;
-
-    padding: 25px;
-
-    border-radius: 15px;
-
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-
-    margin-bottom: 30px;
-}
-
-.section-title {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-bottom: 20px;
-}
-
-.section-title h2 {
-    color: #333;
-}
-
-.section-title a {
-    color: darkred;
-
-    text-decoration: none;
-
-    font-weight: bold;
-}
-
-.contact-item {
-    border-bottom: 1px solid #eee;
-
-    padding: 15px 0;
-}
-
-.contact-item:last-child {
-    border-bottom: none;
-}
-
-.contact-header {
-    display: flex;
-
-    justify-content: space-between;
-
-    margin-bottom: 8px;
-}
-
-.contact-name {
-    font-weight: bold;
-}
-
-.contact-email {
-    color: #777;
-
-    font-size: 14px;
-}
-
-.contact-message {
-    color: #555;
-
-    line-height: 1.5;
-}
-
-.contact-date {
-    color: #999;
-
-    font-size: 12px;
-
-    margin-top: 8px;
-}
-
-.loading {
-    color: #777;
-
-    text-align: center;
-
-    padding: 20px;
-}
-
-
-/* RESPONSIVE */
-
-@media (max-width: 600px) {
-
-    .navbar {
-        padding: 20px;
-    }
-
-    .container {
-        width: 92%;
-    }
-
-    .stats {
-        grid-template-columns: 1fr;
-    }
-
-    .menu {
-        flex-direction: column;
-    }
-
-    .contact-header {
-        flex-direction: column;
-
-        gap: 5px;
-    }
-
-}
-    </style>
+    <title>Dashboard Admin | HypeText</title>
+    <link rel="stylesheet" href="shared.css"/>
+    <link rel="stylesheet" href="dashboard.css" />
   </head>
 
   <body>
-    <nav class="navbar">
-      <h2>Admin Dashboard</h2>
+    <div class="dashboard-layout">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <a href="dashboard.html" class="brand">
+          <span class="brand-icon">H</span>
+          <span>Hype<span class="brand-highlight">Text</span></span>
+        </a>
 
-      <a href="index.html"> Kembali ke Website </a>
-    </nav>
+        <p class="sidebar-label">MENU UTAMA</p>
 
-    <main class="container">
-      <div class="welcome">
-        <h1>Dashboard</h1>
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-link active">
+            <span class="nav-icon">▦</span>
+            Dashboard
+          </a>
 
-        <p>Selamat datang di halaman admin website.</p>
-      </div>
+          <a href="admin.html" class="nav-link">
+            <span class="nav-icon">✉</span>
+            Kelola Contact
+          </a>
+        </nav>
 
-      <section class="stats">
+        <div class="sidebar-bottom">
+          <a href="index.html" class="nav-link">
+            <span class="nav-icon">↗</span>
+            Lihat Website
+          </a>
 
-  <div class="card">
-    <h3>Total Pesan</h3>
-    <div id="total-contact" class="number">-</div>
-  </div>
-
-  <div class="card">
-    <h3>🔵 Pesan Baru</h3>
-    <div id="total-baru" class="number">-</div>
-  </div>
-
-  <div class="card">
-    <h3>🟡 Sudah Dibaca</h3>
-    <div id="total-dibaca" class="number">-</div>
-  </div>
-
-  <div class="card">
-    <h3>🟢 Selesai</h3>
-    <div id="total-selesai" class="number">-</div>
-  </div>
-
-</section>
-
-      <section class="latest-section">
-        <div class="section-title">
-          <h2>Pesan Terbaru</h2>
-
-          <a href="admin.html"> Lihat Semua </a>
+          <button type="button" class="nav-link logout-button" id="logout-button">
+            <span class="nav-icon">⇥</span>
+            Keluar
+          </button>
         </div>
+      </aside>
 
-        <div id="latest-contact">
-          <p class="loading">Loading...</p>
-        </div>
-      </section>
+      <!-- Konten utama -->
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="topbar-label">ADMIN PANEL</p>
+            <h1>Dashboard</h1>
+          </div>
 
-      <div class="menu">
-        <a href="admin.html"> Kelola Contact </a>
+          <div class="admin-profile">
+            <div class="profile-avatar">A</div>
+            <div class="profile-info">
+              <strong>Administrator</strong>
+              <span>Admin</span>
+            </div>
+          </div>
+        </header>
 
-        <a href="index.html#contact"> Lihat Website </a>
-      </div>
-    </main>
+        <section class="welcome-section">
+          <div>
+            <p class="welcome-label">RINGKASAN WEBSITE</p>
+            <h2>Selamat datang kembali!</h2>
+            <p class="welcome-description">
+              Pantau dan kelola pesan yang masuk melalui website HypeText.
+            </p>
+          </div>
+        </section>
+
+        <!-- Statistik -->
+        <section class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-top">
+              <span class="stat-label">Total Pesan</span>
+              <span class="stat-icon icon-total">✉</span>
+            </div>
+            <p class="stat-number" id="total-contact">0</p>
+            <p class="stat-description">Seluruh pesan masuk</p>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-top">
+              <span class="stat-label">Pesan Baru</span>
+              <span class="stat-icon icon-new">●</span>
+            </div>
+            <p class="stat-number" id="total-baru">0</p>
+            <p class="stat-description">Belum dibaca</p>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-top">
+              <span class="stat-label">Sudah Dibaca</span>
+              <span class="stat-icon icon-read">✓</span>
+            </div>
+            <p class="stat-number" id="total-dibaca">0</p>
+            <p class="stat-description">Sedang ditindaklanjuti</p>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-top">
+              <span class="stat-label">Selesai</span>
+              <span class="stat-icon icon-done">✓</span>
+            </div>
+            <p class="stat-number" id="total-selesai">0</p>
+            <p class="stat-description">Pesan telah diselesaikan</p>
+          </article>
+        </section>
+
+        <!-- Pesan terbaru -->
+        <section class="content-card">
+          <div class="section-header">
+            <div>
+              <h2>Pesan Terbaru</h2>
+              <p>Pesan yang terakhir diterima oleh website.</p>
+            </div>
+
+            <a href="admin.html" class="view-all-link">
+              Lihat semua <span>→</span>
+            </a>
+          </div>
+
+          <div id="latest-contact" class="latest-contact">
+            <p class="loading">Memuat pesan terbaru...</p>
+          </div>
+        </section>
+
+        <footer class="dashboard-footer">
+          <p>© 2026 HypeText Admin Panel</p>
+        </footer>
+      </main>
+    </div>
 
     <script src="dashboard.js"></script>
   </body>

@@ -1,0 +1,196 @@
+/* KARTU STATISTIK */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  min-width: 0;
+  padding: 22px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  box-shadow: 0 4px 15px rgb(25 28 45 / 3%);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgb(25 28 45 / 7%);
+}
+
+.stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.stat-label {
+  color: #6f7383;
+  font-size: 13px;
+}
+
+.stat-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.icon-total {
+  background: #fce7e7;
+  color: #b91c1c;
+}
+
+.icon-new {
+  background: #fff1d6;
+  color: #b77908;
+}
+
+.icon-read {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.icon-done {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.stat-number {
+  margin-top: 18px;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.stat-description {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* PESAN TERBARU */
+
+.content-card {
+  padding: 25px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  box-shadow: 0 4px 15px rgb(25 28 45 / 3%);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-header h2 {
+  font-size: 17px;
+}
+
+.section-header p {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.view-all-link {
+  flex-shrink: 0;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.view-all-link:hover {
+  color: var(--primary-dark);
+}
+
+.view-all-link span {
+  margin-left: 3px;
+}
+
+.latest-contact {
+  display: grid;
+}
+
+.contact-item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.contact-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 15px;
+}
+
+.contact-name {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.contact-email {
+  color: var(--muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.contact-message {
+  margin-top: 9px;
+  color: #55596a;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.contact-date {
+  margin-top: 10px;
+  color: #989baa;
+  font-size: 11px;
+}
+
+.loading {
+  padding: 25px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 420px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    align-items: flex-start;
+  }
+
+  .section-header h2 {
+    font-size: 15px;
+  }
+
+  .view-all-link {
+    font-size: 11px;
+  }
+}
